@@ -66,5 +66,5 @@ on Telegram message:
 
 1. Добавь секреты TG_* в окружение / automation.  
 2. Run now у send — должно прийти сообщение в чат.  
-3. Run now у scout — появятся `digests/…`, `latest.md`.  
+3. Run now у scout — появятся `digests/…`, `latest.md`, PR **уже merged** в `main` (агент делает `gh pr merge` сам).  
 4. `/scout` из TG — в Cursor run history новый run.
