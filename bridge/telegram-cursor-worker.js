@@ -6,9 +6,8 @@
  *   CURSOR_SCOUT_WEBHOOK_URL, CURSOR_SCOUT_WEBHOOK_KEY
  *   CURSOR_SEND_WEBHOOK_URL, CURSOR_SEND_WEBHOOK_KEY  (optional)
  *
+ * Pins: short summaries only; one pin per digest date; older pins kept as archive.
  * Bot needs: send messages, pin messages (admin in group).
- * setWebhook → this worker URL.
- * BotFather: Privacy Mode ON ok; Groups enabled.
  */
 const RAW_BASE =
   "https://raw.githubusercontent.com/zoloftstep-tech/github-repo-scout/main";
@@ -46,7 +45,7 @@ export default {
         await reply(
           env,
           chatId,
-          "Команды:\n/run — scout + дайджест после готовности\n/digest — прислать текущий дайджест с кнопками\n/scout — только поиск (как /run)"
+          "Команды:\n/run — scout + дайджест после готовности\n/digest — текущий дайджест с кнопками\nКнопки → короткий закреп-саммари; новый дайджест = новый закреп (архив)."
         );
         return json({ ok: true });
       }
@@ -111,6 +110,7 @@ async function onCallback(env, cq) {
   }
   const n = Number(m[1]);
   const pack = await fetchCards();
+  const date = pack.date || "";
   const card = (pack.repos || []).find((r) => Number(r.n) === n);
   if (!card) {
     await tg(env, "answerCallbackQuery", {
@@ -121,47 +121,91 @@ async function onCallback(env, cq) {
     return;
   }
 
-  const block = formatCard(card);
-  const header = `${PIN_MARK} из дайджеста ${pack.date || ""}`.trim();
-  const chat = await tg(env, "getChat", { chat_id: chatId });
-  const pinned = chat.result?.pinned_message;
-  const pinnedText = pinned?.text || "";
-  const canReuse =
-    pinned &&
-    pinned.from?.is_bot &&
-    pinnedText.startsWith(PIN_MARK) &&
-    (!pack.date || pinnedText.includes(pack.date));
+  const block = formatPinSummary(card);
+  const header = `${PIN_MARK} · ${date || "без даты"}\nкороткие саммари · полный текст в дайджесте выше`;
+  const me = await tg(env, "getMe", {});
+  const botId = me.result?.id;
 
-  if (canReuse) {
-    if (pinnedText.includes(`#${n}  ·`) || pinnedText.includes(`#${n}\n`)) {
+  // Prefer cached message_id for this digest date (survives other pins).
+  // New digest date → always a NEW pinned message (old pins stay as archive).
+  const state = await loadPinState(chatId);
+  let targetId = null;
+  let currentText = "";
+
+  if (state && state.date === date && state.messageId) {
+    targetId = state.messageId;
+    currentText = state.text || "";
+    const chat = await tg(env, "getChat", { chat_id: chatId });
+    const pinned = chat.result?.pinned_message;
+    if (pinned?.message_id === targetId && pinned.text) {
+      currentText = pinned.text;
+    } else if (
+      pinned &&
+      pinned.from?.id === botId &&
+      (pinned.text || "").startsWith(PIN_MARK) &&
+      date &&
+      (pinned.text || "").includes(date)
+    ) {
+      targetId = pinned.message_id;
+      currentText = pinned.text || currentText;
+    }
+  } else {
+    const chat = await tg(env, "getChat", { chat_id: chatId });
+    const pinned = chat.result?.pinned_message;
+    const pinnedText = pinned?.text || "";
+    if (
+      pinned &&
+      pinned.from?.id === botId &&
+      pinnedText.startsWith(PIN_MARK) &&
+      date &&
+      pinnedText.includes(date)
+    ) {
+      targetId = pinned.message_id;
+      currentText = pinnedText;
+    }
+  }
+
+  if (targetId && currentText) {
+    if (alreadyInPin(currentText, n)) {
       await tg(env, "answerCallbackQuery", {
         callback_query_id: cq.id,
         text: `#${n} уже в подборке`,
       });
       return;
     }
-    const next = `${pinnedText}\n\n${block}`;
+    const next = `${currentText}\n\n${block}`;
     if (next.length > 4000) {
       await tg(env, "answerCallbackQuery", {
         callback_query_id: cq.id,
-        text: "Подборка переполнена (лимит TG). Сними закреп и начни заново.",
+        text: "Подборка переполнена. Сними этот закреп или начни новую (старые закрепы-архив не трогаем).",
         show_alert: true,
       });
       return;
     }
-    await tg(env, "editMessageText", {
-      chat_id: chatId,
-      message_id: pinned.message_id,
-      text: next,
-      disable_web_page_preview: true,
-    });
-    await tg(env, "answerCallbackQuery", {
-      callback_query_id: cq.id,
-      text: `Добавил #${n} в закреп`,
-    });
-    return;
+    try {
+      await tg(env, "editMessageText", {
+        chat_id: chatId,
+        message_id: targetId,
+        text: next,
+        disable_web_page_preview: true,
+      });
+    } catch (e) {
+      // Stale message_id → start a fresh pin for this digest
+      targetId = null;
+      currentText = "";
+      await reply(env, chatId, `Не смог дописать старую подборку (${String(e.message || e).slice(0, 120)}). Создаю новую.`);
+    }
+    if (targetId) {
+      await savePinState(chatId, { date, messageId: targetId, text: next });
+      await tg(env, "answerCallbackQuery", {
+        callback_query_id: cq.id,
+        text: `Добавил #${n} в закреп`,
+      });
+      return;
+    }
   }
 
+  // New pin (first pick for this digest, or edit failed). Does NOT unpin older digests.
   const text = `${header}\n\n${block}`;
   const sent = await tg(env, "sendMessage", {
     chat_id: chatId,
@@ -169,17 +213,74 @@ async function onCallback(env, cq) {
     disable_web_page_preview: true,
   });
   const mid = sent.result?.message_id;
-  if (mid) {
-    await tg(env, "pinChatMessage", {
-      chat_id: chatId,
-      message_id: mid,
-      disable_notification: true,
-    });
+  if (!mid) throw new Error("sendMessage: нет message_id");
+
+  const pin = await tg(env, "pinChatMessage", {
+    chat_id: chatId,
+    message_id: mid,
+    disable_notification: true,
+  });
+  if (!pin.ok) {
+    await reply(
+      env,
+      chatId,
+      `Сообщение #${n} отправил, но закрепить не вышло: ${JSON.stringify(pin).slice(0, 200)}. Проверь право Pin messages.`
+    );
   }
+
+  await savePinState(chatId, { date, messageId: mid, text });
   await tg(env, "answerCallbackQuery", {
     callback_query_id: cq.id,
-    text: `Закрепил #${n}`,
+    text: pin.ok ? `Закрепил #${n}` : `Добавил #${n} (без pin)`,
   });
+}
+
+/** Short line for pin archive — full writeup stays in digest messages. */
+function formatPinSummary(c) {
+  const why = clip(c.why || c.what || "", 140);
+  const cat = c.category ? ` · ${c.category}` : "";
+  return [`#${c.n} · ${c.full_name} · ⭐ ${c.stars || 0}${cat}`, why, c.url].filter(Boolean).join("\n");
+}
+
+function clip(s, max) {
+  const t = String(s).replace(/\s+/g, " ").trim();
+  if (t.length <= max) return t;
+  return t.slice(0, max - 1).trimEnd() + "…";
+}
+
+function alreadyInPin(text, n) {
+  return (
+    text.includes(`#${n} · `) ||
+    text.includes(`#${n}  ·`) ||
+    new RegExp(`#${n}\\s*·`).test(text)
+  );
+}
+
+async function loadPinState(chatId) {
+  try {
+    const res = await caches.default.match(pinCacheKey(chatId));
+    if (!res) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
+async function savePinState(chatId, state) {
+  try {
+    await caches.default.put(
+      pinCacheKey(chatId),
+      new Response(JSON.stringify(state), {
+        headers: { "Content-Type": "application/json", "Cache-Control": "max-age=1209600" },
+      })
+    );
+  } catch {
+    // non-fatal
+  }
+}
+
+function pinCacheKey(chatId) {
+  return new Request(`https://scout-pin-state.local/${chatId}`);
 }
 
 async function postDigestFromGithub(env, chatId) {
@@ -374,9 +475,8 @@ async function tg(env, method, payload) {
     body: JSON.stringify(payload),
   });
   const data = await res.json();
-  if (!data.ok && method !== "answerCallbackQuery") {
-    // pin may fail if not admin — still return
-    if (method === "pinChatMessage") return data;
+  // pinChatMessage: caller checks data.ok and reports to chat
+  if (!data.ok && method !== "answerCallbackQuery" && method !== "pinChatMessage") {
     throw new Error(`${method}: ${JSON.stringify(data)}`);
   }
   return data;
