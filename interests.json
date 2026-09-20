@@ -1,0 +1,11 @@
+{
+  "AI-агенты и LLM": "AI agent OR LLM framework OR langchain OR llamaindex OR autogen stars:>=50",
+  "Автоматизация бизнеса": "business automation OR workflow engine OR CRM OR ERP open-source -n8n",
+  "Упаковка и производство": "packaging calculator OR carton OR corrugated OR manufacturing MES OR inventory",
+  "Telegram-боты": "telegram bot OR grammy OR telegraf OR aiogram",
+  "Next.js и веб": "Next.js OR Vercel OR full-stack typescript web app",
+  "Кибербезопасность": "security tooling OR self-hosted security OR vulnerability OR secrets scanning",
+  "3D и печать": "3D printing OR CAD OR OpenSCAD OR slicer",
+  "Музыкальное производство": "music production OR synthesizer OR DAW OR audio plugin OR VST",
+  "Коммерческие SaaS-заготовки": "SaaS starter OR boilerplate billing OR multi-tenant"
+}
