@@ -1,70 +1,80 @@
-# Telegram: отправка дайджеста и ручной запуск
+# Telegram: группа, команды, кнопки
 
-У Cursor Automations **нет** нативного Telegram. Схема ниже — через Bot API + Webhook.
+У Cursor Automations **нет** нативного Telegram. Схема: Bot API + Cloudflare Worker (`bridge/`).
 
-## Секреты
-
-В Cloud Agent / Automations добавь:
+## Секреты (Cloud Agents / обе автоматизации)
 
 | Secret | Значение |
 |--------|----------|
 | `TG_BOT_TOKEN` | токен от [@BotFather](https://t.me/BotFather) |
-| `TG_CHAT_ID` | id чата (личный или группа), куда слать дайджест |
+| `TG_CHAT_ID` | id **группы** (обычно `-100…`) |
 
-Узнать `chat_id`: напиши боту, затем  
-`curl "https://api.telegram.org/bot$TG_BOT_TOKEN/getUpdates"`  
-и возьми `message.chat.id`.
+Узнать `chat_id` группы: добавь бота, напиши любое сообщение,  
+`curl "https://api.telegram.org/bot$TG_BOT_TOKEN/getUpdates"` → `message.chat.id`.
 
-## Две автоматизации
+Секреты должны быть доступны **и scout, и send** (общие Secrets или продублировать в обеих автоматизациях).
 
-### 1) `repo-scout` — поиск
+## Команды в группе (одна точка входа)
 
-- Trigger: Schedule `0 3 * * 0` (вс 06:00 Minsk) **и** Webhook  
-- Prompt: содержимое `PROMPT.md`, режим **scout**  
-- Repo: `zoloftstep-tech/github-repo-scout` @ `main`  
-- После save скопируй **Webhook URL** и **API key**
+| Команда | Что делает |
+|---------|------------|
+| **`/run`** | Запускает scout (webhook). После merge агент сам шлёт дайджест с кнопками. Это и есть «scout + send одной командой». |
+| `/scout` | То же, что `/run` |
+| `/digest` | Только рассылка текущего `latest.md` + кнопки (без нового поиска) |
+| `/help` | Список команд |
 
-### 2) `repo-scout-send` — рассылка в 11:00
+В группе пиши `/run` или `/run@YourBot`.
 
-- Trigger: Schedule `0 8 * * 0` (вс 11:00 Minsk)  
-- Prompt: «Режим **send** по `PROMPT.md`: прочитай `latest.md` и отправь в Telegram. Поиск не запускай.»  
-- Те же repo + секреты TG_*
+## Кнопки и закреп
 
-## Ручной запуск из Telegram
+1. Дайджест приходит кусками `(1/N)`.
+2. Ниже — сообщение с кнопками `1 2 3 …` (номера репо).
+3. Первое нажатие → бот шлёт сообщение-подборку и **закрепляет**.
+4. Следующие нажатия → **дописывают** в это же закреплённое сообщение (не создают новое).
+5. Лимит TG ~4096 символов: если подборка полна — сними закреп и начни снова.
 
-Нужен тонкий bridge (Cloudflare Worker / маленький VPS / n8n* / любой хостинг), который:
+Бот в группе должен быть **админом** с правом **Pin messages**.
 
-1. Принимает updates от Telegram (webhook бота или long polling).
-2. На команду `/scout` делает:
+Данные кнопок: `digest_cards.json` на `main` (пишет scout).
 
-```http
-POST <CURSOR_SCOUT_WEBHOOK_URL>
-Authorization: Bearer <CURSOR_WEBHOOK_API_KEY>
-Content-Type: application/json
+## Автоматизации Cursor
 
-{"prompt":"Режим scout: выполни PROMPT.md, затем кратко ответь в Telegram что дайджест готов."}
+### 1) Weekly GitHub Scout
+
+- Schedule `0 3 * * 0` + **Webhook**
+- Prompt: `automations/SCOUT_PROMPT.md`
+- После Save скопируй Webhook URL и API key → в Worker secrets
+
+### 2) repo-scout-send
+
+- Schedule `0 8 * * 0` (вс 11:00 Minsk)
+- Prompt: `automations/SEND_PROMPT.md`
+- Те же `TG_*`
+
+## Деплой bridge
+
+```bash
+cd bridge
+npx wrangler login
+npx wrangler deploy
+npx wrangler secret put TG_BOT_TOKEN
+npx wrangler secret put TG_CHAT_ID
+npx wrangler secret put CURSOR_SCOUT_WEBHOOK_URL
+npx wrangler secret put CURSOR_SCOUT_WEBHOOK_KEY
+# опционально (иначе /digest читает GitHub сам):
+npx wrangler secret put CURSOR_SEND_WEBHOOK_URL
+npx wrangler secret put CURSOR_SEND_WEBHOOK_KEY
 ```
 
-3. На `/digest` — либо POST на webhook **send**-автоматизации, либо сам читает  
-   `https://raw.githubusercontent.com/zoloftstep-tech/github-repo-scout/main/latest.md`  
-   и шлёт в чат через `sendMessage`.
-
-\* n8n как продукт в дайджесте репозиториев запрещён; как личный bridge для бота — на твоё усмотрение, к scout-логике не относится.
-
-Минимальный псевдокод bridge:
-
-```text
-on Telegram message:
-  if text == "/scout":
-    POST cursor scout webhook
-    reply "Запустил поиск, обычно готов за 30–90 мин; дайджест в git + /digest"
-  if text == "/digest":
-    POST cursor send webhook  OR  send latest.md now
+Webhook бота:
+```bash
+curl "https://api.telegram.org/bot$TG_BOT_TOKEN/setWebhook?url=https://YOUR_WORKER.workers.dev"
 ```
+
+BotFather: группы **включены**; Privacy Mode можно оставить ON (команды всё равно доходят).
 
 ## Проверка
 
-1. Добавь секреты TG_* в окружение / automation.  
-2. Run now у send — должно прийти сообщение в чат.  
-3. Run now у scout — появятся `digests/…`, `latest.md`, PR **уже merged** в `main` (агент делает `gh pr merge` сам).  
-4. `/scout` из TG — в Cursor run history новый run.
+1. В группе: `/digest` → куски + кнопки.
+2. Жми `1`, потом `2` → одно закреплённое сообщение растёт.
+3. `/run` → в Cursor новый scout run; через 30–90 мин дайджест в группе.
