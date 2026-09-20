@@ -1,474 +1,699 @@
-# Дайджест репозиториев — 2026-09-20
-
-Кратко: рекомендовано 27 / отклонено 124 в 9 категориях.
-Окно прогона: старт 2026-09-20 17:03 / публикация 2026-09-20 17:11 (Minsk).
-
-## Рекомендованные
-
-### AI-агенты и LLM
-
-#### [1f916-ai/1f916](https://github.com/1f916-ai/1f916) — ⭐ 75, обновлён 0 дн. назад
-**Что это:** Экспериментальная платформа «общества» AI-агентов без человеческого UI: агенты взаимодействуют между собой через собственные интерфейсы/протоколы. README описывает agent-to-agent среду, а не готовый бизнес-продукт.
-
-**Почему может подойти:** Полезно как исследование multi-agent паттернов; для БОКСМАРТ применимость слабая — нет готового CRM/калькулятора. Имеет смысл смотреть идеи оркестрации, не внедрять as-is.
-
-**Кейсы использования:**
-1. Изучить паттерны общения агентов без человека в контуре.
-2. Сравнить с self-hosted оркестраторами вроде 5dive.
-3. Не ставить в прод без отдельного security review (AGPL-3.0).
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: AGPL-3.0.
-
-#### [5dive-ai/5dive](https://github.com/5dive-ai/5dive) — ⭐ 60, обновлён 0 дн. назад
-**Что это:** Self-hosted runtime для «компании» AI-агентов на своём сервере: именованные агенты (Claude Code, Codex и др.), оргструктура, общий backlog, handoff между агентами; человека пингуют только когда нужно решение. MIT.
-
-**Почему может подойти:** Прямо под стек Ростислава (Cursor/Claude Code) и сценарий one-person company: агенты ведут задачи по упаковке/ботам/вебу, эскалируя только решения.
-
-**Кейсы использования:**
-1. Поднять на VPS очередь задач по доработкам калькулятора упаковки.
-2. Разделить роли: код / ревью / документация с handoff.
-3. Настроить уведомления только на human-in-the-loop шаги.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT.
-
-#### [ZSeven-W/rish-app](https://github.com/ZSeven-W/rish-app) — ⭐ 135, обновлён 0 дн. назад
-**Что это:** Local-first мобильный клиент AI-агентов (iOS/Android): workspace, выполнение с approvals, выбор модели (DSH, Claude Code, Codex, GLM). README позиционирует как «pocket agent».
-
-**Почему может подойти:** Удобно контролировать агентов с телефона вне рабочего Mac — для выездов на производство/склад. Не замена десктопному Cursor, а мобильный пульт.
-
-**Кейсы использования:**
-1. Approve/reject действий агента по дороге.
-2. Быстрый запрос статуса задач без ноутбука.
-3. Тест local-first агентов на устройстве без облачного UI.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT.
-
-### Автоматизация бизнеса
-
-#### [macro-inc/macro](https://github.com/macro-inc/macro) — ⭐ 4364, обновлён 0 дн. назад
-**Что это:** Open-source unified workspace: почта, чат, доки, задачи, звонки, CRM и агенты с общей AI-памятью (Rust/TS). Альтернатива связке Slack+Notion+CRM.
-
-**Почему может подойти:** Закрывает интерес к CRM и автоматизации в одном контуре; для малого производства может заменить разрозненные чаты/таблицы, но миграция почты/CRM — отдельный проект. AGPL-3.0.
-
-**Кейсы использования:**
-1. Пилот внутреннего workspace для менеджеров БОКСМАРТ.
-2. CRM-карточки клиентов рядом с перепиской и задачами.
-3. Оценить agent memory для типовых запросов по заказам.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: AGPL-3.0.
-
-#### [erp-mafia/accounted](https://github.com/erp-mafia/accounted) — ⭐ 369, обновлён 0 дн. назад
-**Что это:** Agent-native open-source ERP: учёт/операции рассчитаны на работу через AI-агентов, а не только классические формы (по README/описанию).
-
-**Почему может подойти:** Интересен как лёгкая альтернатива тяжёлому Odoo для экспериментов «ERP + агенты»; зрелость экосистемы ниже классических ERP — пилот, не мгновенная замена.
-
-**Кейсы использования:**
-1. Прототип учёта заказов/складских движений с агентным UI.
-2. Сравнить модель данных с ObjectStack/Odoo.
-3. Проверить лицензию (NOASSERTION в GitHub) перед коммерческим использованием.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: NOASSERTION.
-
-#### [objectstack-ai/objectstack](https://github.com/objectstack-ai/objectstack) — ⭐ 63, обновлён 0 дн. назад
-**Что это:** Metadata-driven платформа: data model, UI, workflows и permissions как типизированные метаданные; заявлен полный CRM в одном context window для агентов. Apache-2.0.
-
-**Почему может подойти:** Сильный fit к идее «агенты правят бизнес-приложением»: можно описать заказы/КП/статусы упаковки компактно и дать агенту рефакторить целиком.
-
-**Кейсы использования:**
-1. Собрать тонкий CRM заказов гофротары на метаданных.
-2. Дать агенту читать всю модель приложения целиком.
-3. Прототип permissions для менеджер/производство.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: Apache-2.0.
-
-### Упаковка и производство
-
-#### [qcadoo/mes](https://github.com/qcadoo/mes) — ⭐ 941, обновлён 2 дн. назад
-**Что это:** qcadoo MES — веб-система управления производством (Manufacturing Execution): заказы, технологии, цеховой учёт. Дружелюбный open-source MES.
-
-**Почему может подойти:** Прямое попадание в производство упаковки: MES нужен для тиражей, смен, статусов на цехе — ближе к БОКСМАРТ, чем generic CRM.
-
-**Кейсы использования:**
-1. Пилот учёта производственных заказов на гофроящики.
-2. Связка статусов «в работе / готово / отгружено».
-3. Оценить, хватает ли модулей под раскрой/спецификации.
-
-**Проверка безопасности:** Scorecard score=3; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: NOASSERTION.
-
-#### [celerp/celerp](https://github.com/celerp/celerp) — ⭐ 31, обновлён 0 дн. назад
-**Что это:** Self-hosted desktop ERP для операций бизнеса: модульное ядро, MIT-модули, без обязательного облака (по описанию).
-
-**Почему может подойти:** Лёгкий ERP без тяжёлого веб-внедрения; подходит для пробы контуров склад/продажи на локальной машине. Звёзд мало — смотреть активность и модули внимательно.
-
-**Кейсы использования:**
-1. Локальный пилот склада и продаж.
-2. Сравнить модульность с NotrinosERP/qcadoo.
-3. Проверить, есть ли manufacturing-модули под тиражи.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: NOASSERTION.
-
-#### [notrinos/NotrinosERP](https://github.com/notrinos/NotrinosERP) — ⭐ 161, обновлён 0 дн. назад
-**Что это:** Веб-ERP на PHP/MySQL: CRM, продажи, закупки, склад, производство, payroll; multi-user, multi-currency, workflow согласований.
-
-**Почему может подойти:** Классический self-hosted ERP с manufacturing — реалистичный кандидат на контур ООО «БОКСМАРТ», если не тянуть полный Odoo.
-
-**Кейсы использования:**
-1. Склад готовой упаковки и отгрузки.
-2. CRM B2B-клиентов и КП.
-3. Manufacturing под спецификации тиражей.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: GPL-3.0.
-
-### Telegram-боты
-
-#### [fedorabakumets/telegram-bot-builder](https://github.com/fedorabakumets/telegram-bot-builder) — ⭐ 35, обновлён 2 дн. назад
-**Что это:** Визуальный drag-and-drop конструктор Telegram-ботов: генерирует Python/aiogram код. React+TS frontend, Express, PostgreSQL; медиа, клавиатуры, ветвления, аналитика.
-
-**Почему может подойти:** Быстро собрать бота уведомлений/поддержки для клиентов БОКСМАРТ без ручного каркаса aiogram; код можно допилить в Cursor.
-
-**Кейсы использования:**
-1. Бот статуса заказа для клиентов.
-2. Внутренние алерты менеджерам о готовности тиража.
-3. Прототип FAQ по типам упаковки с клавиатурами.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT.
-
-#### [kirillDevPro/cloud-control-bot](https://github.com/kirillDevPro/cloud-control-bot) — ⭐ 35, обновлён 6 дн. назад
-**Что это:** Telegram-бот мониторинга и управления облачными серверами (Vultr/Hetzner/AWS): uptime, start/stop/reboot, балансы и costs, multi-account, RU/EN.
-
-**Почему может подойти:** Практично для инфраструктуры (Vercel/VPS рядом с ботами и CRM): контроль с телефона и затрат. Не клиентский shop-бот, а ops-инструмент.
-
-**Кейсы использования:**
-1. Алерты падения VPS с ботом/CRM.
-2. Ребут инстанса из Telegram.
-3. Контроль расходов Hetzner/AWS.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: NOASSERTION.
-
-#### [danog/MadelineProto](https://github.com/danog/MadelineProto) — ⭐ 3518, обновлён 0 дн. назад
-**Что это:** Зрелый async PHP MTProto API-клиент для Telegram: низкоуровневая работа с API (не только Bot API), боты и userbots.
-
-**Почему может подойти:** Если нужен PHP-стек или сценарии шире Bot API — база для кастомных интеграций. Для типичного aiogram/TS-бота может быть избыточен.
-
-**Кейсы использования:**
-1. PHP-сервис уведомлений в Telegram.
-2. Интеграция ERP → Telegram без Bot-only ограничений.
-3. Изучить MTProto-паттерны перед выбором стека.
-
-**Проверка безопасности:** Scorecard score=5.9; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: AGPL-3.0.
-
-### Next.js и веб
-
-#### [SenteLabsAI/OpenExecutive](https://github.com/SenteLabsAI/OpenExecutive) — ⭐ 5045, обновлён 0 дн. назад
-**Что это:** AI «виртуальный executive team»: единая executive-персона на базе нескольких specialist-агентов (по описанию репозитория).
-
-**Почему может подойти:** Идея «совета директоров из агентов» полезна для приоритизации продуктов БОКСМАРТ; проверять, есть ли Next.js/self-host и какие ключи/облака требуются. Применимость к коду — косвенная.
-
-**Кейсы использования:**
-1. Еженедельный разбор приоритетов продуктов через агентов.
-2. Сценарии go-to-market для новых SKU упаковки.
-3. Сравнить с self-hosted 5dive по контролю данных.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: NOASSERTION.
-
-#### [spree/storefront](https://github.com/spree/storefront) — ⭐ 62, обновлён 0 дн. назад
-**Что это:** Open-source Next.js storefront для Spree Commerce: DTC и B2B, Stripe/Adyen/PayPal, multi-region, one-page checkout. MIT.
-
-**Почему может подойти:** Готовый Next.js B2B/DTC витринный каркас под возможный e-commerce упаковки; стыкуется с интересом к Next/Vercel.
-
-**Кейсы использования:**
-1. Витрина стандартных коробок с checkout.
-2. B2B-каталог для постоянных клиентов.
-3. Основа для кастомного калькулятора на App Router.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT.
-
-#### [eren23/openflipbook](https://github.com/eren23/openflipbook) — ⭐ 197, обновлён 0 дн. назад
-**Что это:** Open-source клон flipbook.page на Next.js + FastAPI: страницы — AI-иллюстрации, интерактивное углубление. BYO API keys.
-
-**Почему может подойти:** Слабая прямая связь с упаковкой/CRM; полезен как пример Next.js+AI UI и генеративного контента. Для коммерции БОКСМАРТ — скорее учебный/маркетинговый эксперимент.
-
-**Кейсы использования:**
-1. Сделать AI-буклет с линейкой упаковки.
-2. Изучить паттерн Next.js + FastAPI + Modal.
-3. Не брать как основу ERP/CRM.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT.
-
-### Кибербезопасность
-
-#### [tokenfuzz/tokenfuzz](https://github.com/tokenfuzz/tokenfuzz) — ⭐ 19, обновлён 0 дн. назад
-**Что это:** Платформа LLM-based vulnerability research: фаззинг/поиск уязвимостей с помощью моделей (по README/описанию).
-
-**Почему может подойти:** Для кибербезопасности инфраструктуры и agent-стека — способ искать дыры в своих сервисах. Мало звёзд — осторожный пилот.
-
-**Кейсы использования:**
-1. Прогон своих API/ботов на типичные дыры.
-2. Сравнить находки с классическими сканерами (Trivy).
-3. Не использовать на чужих системах без разрешения.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: Apache-2.0.
-
-#### [AISecurityLab/hackagent](https://github.com/AISecurityLab/hackagent) — ⭐ 515, обновлён 0 дн. назад
-**Что это:** Open-source toolkit для поиска уязвимостей в AI-агентах (prompt injection, tool abuse и т.п. — по позиционированию).
-
-**Почему может подойти:** Прямо под интерес к AI-агентам + security: перед продом агентов на данных БОКСМАРТ стоит прогнать такие проверки.
-
-**Кейсы использования:**
-1. Тест своих coding/ops-агентов на injection.
-2. Регрессия после добавления новых tools.
-3. Чеклист перед доступом агента к CRM/секретам.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: Apache-2.0.
-
-#### [mitchellkrogza/apache-ultimate-bad-bot-blocker](https://github.com/mitchellkrogza/apache-ultimate-bad-bot-blocker) — ⭐ 981, обновлён 0 дн. назад
-**Что это:** Набор правил для Apache: блок плохих ботов, spam referrer, vulnerability scanners, malware/adware user-agents.
-
-**Почему может подойти:** Практичная защита веб/админок (ERP, storefront, панели) на self-hosted Apache. Для Nginx нужны аналоги/конвертация.
-
-**Кейсы использования:**
-1. Закрыть админку MES/ERP от сканеров.
-2. Снизить мусорный трафик на витрине.
-3. Дополнить WAF/fail2ban.
-
-**Проверка безопасности:** Scorecard score=2.5; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: NOASSERTION.
-
-### 3D и печать
-
-#### [pzfreo/draftwright](https://github.com/pzfreo/draftwright) — ⭐ 66, обновлён 0 дн. назад
-**Что это:** Автогенерация технических чертежей из build123d и STEP-файлов.
-
-**Почему может подойти:** Для оснастки/3D-печати деталей и шаблонов упаковки/вспомогательной оснастки — быстрые чертежи из CAD-модели.
-
-**Кейсы использования:**
-1. Чертежи из STEP для подрядчика.
-2. Документация parametric-моделей build123d.
-3. Связка с печатью прототипов оснастки.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: AGPL-3.0.
-
-#### [andymai/brepjs](https://github.com/andymai/brepjs) — ⭐ 109, обновлён 0 дн. назад
-**Что это:** Web CAD библиотека с точной B-Rep геометрией в браузере.
-
-**Почему может подойти:** Потенциал встроить простой CAD/просмотр геометрии в веб-калькулятор или конфигуратор упаковки (если пойдёте в 3D-превью).
-
-**Кейсы использования:**
-1. Прототип web-превью коробки.
-2. Исследование B-Rep в браузере без тяжёлого desktop CAD.
-3. Интеграция в Next.js-конфигуратор (потребует R&D).
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: Apache-2.0.
-
-#### [OrcaSlicer/OrcaSlicer](https://github.com/OrcaSlicer/OrcaSlicer) — ⭐ 15731, обновлён 0 дн. назад
-**Что это:** Популярный G-code слайсер для 3D-принтеров (Bambu, Prusa, Voron и др.) — форк/развитие Bambu-ориентированных слайсеров.
-
-**Почему может подойти:** Базовый инструмент, если Ростислав печатает оснастку/прототипы; уже стандарт в экосистеме печати.
-
-**Кейсы использования:**
-1. Слайсинг прототипов оснастки.
-2. Профили под Bambu/Prusa.
-3. Связка с API принтера для итераций.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: AGPL-3.0.
-
-### Музыкальное производство
-
-#### [RustAudio/baseview](https://github.com/RustAudio/baseview) — ⭐ 388, обновлён 0 дн. назад
-**Что это:** Низкоуровневый window-system интерфейс для UI аудиоплагинов (Rust).
-
-**Почему может подойти:** Для разработки собственных VST/аудио-плагинов — инфраструктурный слой UI. Не DAW и не готовый инструмент музыканта.
-
-**Кейсы использования:**
-1. Свой плагин с кастомным UI на Rust.
-2. Изучить стек Rust audio plugin.
-3. Комбинировать с CLAP/VST обёртками.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: Apache-2.0.
-
-#### [zynthian/zynthian-ui](https://github.com/zynthian/zynthian-ui) — ⭐ 215, обновлён 0 дн. назад
-**Что это:** UI открытой платформы Zynthian (модульный Linux-синтезатор/семплер на Pi-подобном железе).
-
-**Почему может подойти:** Практичный путь в электронную музыку на железе: open synth-станция. Нужно железо Zynthian или совместимое.
-
-**Кейсы использования:**
-1. Собрать/прошить Zynthian-станцию.
-2. Кастомизация UI под свой live-set.
-3. Изучить open synth workflow.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: GPL-3.0.
-
-#### [FluidSynth/fluidsynth](https://github.com/FluidSynth/fluidsynth) — ⭐ 2492, обновлён 0 дн. назад
-**Что это:** Software synthesizer по спецификации SoundFont 2 — рендер MIDI через SF2.
-
-**Почему может подойти:** Классика для электронной музыки и эмбеда синтеза в свои тулы/ботов/DAW-цепочки без тяжёлых проприетарных движков.
-
-**Кейсы использования:**
-1. Офлайн-рендер MIDI → WAV в пайплайне.
-2. Саундфонты для sketch-треков.
-3. Встроить synth в свой инструмент.
-
-**Проверка безопасности:** Scorecard score=5.1; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: LGPL-2.1.
-
-### Коммерческие SaaS-заготовки
-
-#### [kenz1117/dsh-ui-usage-billing](https://github.com/kenz1117/dsh-ui-usage-billing) — ⭐ 56, обновлён 0 дн. назад
-**Что это:** Плагин usage billing dashboard для DeepSeek Harness: метрики стоимости в сайдбаре, агрегация usage из session logs, каталог цен провайдеров.
-
-**Почему может подойти:** Узкий, но полезный кусок billing UX для agent-стека; не полный SaaS boilerplate. Можно подсмотреть паттерны учёта токенов/стоимости.
-
-**Кейсы использования:**
-1. Контроль расходов на LLM в команде агентов.
-2. Идеи UI для биллинга в своём SaaS.
-3. Не использовать как единственную SaaS-основу.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT.
-
-#### [blockmatic/basilic](https://github.com/blockmatic/basilic) — ⭐ 89, обновлён 0 дн. назад
-**Что это:** Full-stack API-first agentic TypeScript starter (AI SDK / generative UI по topics).
-
-**Почему может подойти:** Стартер под агентные приложения на TS — ближе к коммерциализации AI-фич, чем пустой CRUD boilerplate. Проверить auth/billing в README перед выбором.
-
-**Кейсы использования:**
-1. Каркас AI-ассистента для менеджеров упаковки.
-2. API-first сервис с generative UI.
-3. Сравнить с классическим Next SaaS starter.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT.
-
-#### [stickerdaniel/saas-starter](https://github.com/stickerdaniel/saas-starter) — ⭐ 55, обновлён 0 дн. назад
-**Что это:** SvelteKit + Convex SaaS starter: auth, billing, admin — оптимизирован под coding agents.
-
-**Почему может подойти:** Полный SaaS-каркас с биллингом; стек SvelteKit (не Next.js) — учитывать, если хотите остаться на Next/Vercel. Хорош как референс структуры auth/billing.
-
-**Кейсы использования:**
-1. Быстрый пилот платного мини-SaaS.
-2. Подсмотреть модель billing/admin.
-3. Портировать идеи на Next.js при необходимости.
-
-**Проверка безопасности:** нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: нет.
-
-## Отклонённые
-
-Кандидаты, которых смотрели, но не взяли в рекомендованные. Без «почему подойдёт».
-
-| Категория | Репозиторий | Описание | Причина отклонения |
-|-----------|-------------|----------|--------------------|
-| AI-агенты и LLM | [WeThinkIn/AIGC-Interview-Book](https://github.com/WeThinkIn/AIGC-Interview-Book) | отсеян при ручной релевантности | релевантность: Emacs/interview, не бизнес-агенты |
-| AI-агенты и LLM | [xenodium/agent-shell](https://github.com/xenodium/agent-shell) | отсеян при ручной релевантности | релевантность: Emacs/interview, не бизнес-агенты |
-| AI-агенты и LLM | [h5i-dev/h5i](https://github.com/h5i-dev/h5i) | Fast, red-teaming browser built for AI agents, with direct HTTP traffic control, | слой4: скам-маркер matched |
-| AI-агенты и LLM | [godot-fun/gai](https://github.com/godot-fun/gai) | A lightweight AI agent and skill workflow framework built with Godot. | релевантность: Godot framework, не бизнес LLM-стек |
-| AI-агенты и LLM | [boxlite-ai/boxlite](https://github.com/boxlite-ai/boxlite) | The micro-VM for AI agents — light enough to embed on your laptop, elastic enoug | слой4: скам-маркер matched |
-| AI-агенты и LLM | [melgarafael/DeskcommCRM](https://github.com/melgarafael/DeskcommCRM) | Open-source AI sales OS — self-hosted CRM with native AI agents + WhatsApp (WAHA | лимит: уже 3 рекомендованных |
-| AI-агенты и LLM | [TokenRhythm/opensquilla](https://github.com/TokenRhythm/opensquilla) | OpenSquilla — Token-Efficient AI Agent with same budget, higher intelligence den | лимит: уже 3 рекомендованных |
-| AI-агенты и LLM | [activepieces/activepieces](https://github.com/activepieces/activepieces) | AI Agents & MCPs & AI Workflow Automation • (~400 MCP servers for AI agents) • A | слой1: n8n |
-| AI-агенты и LLM | [mrpulor-gh/nuphus](https://github.com/mrpulor-gh/nuphus) | Nuphus — 本地优先的 AI Agent：真实桌面执行力 + 手机第二块屏幕。Local-first AI agent with real desktop | лимит: уже 3 рекомендованных |
-| Автоматизация бизнеса | [melgarafael/DeskcommCRM](https://github.com/melgarafael/DeskcommCRM) | Open-source AI sales OS — self-hosted CRM with native AI agents + WhatsApp (WAHA | слой4: скам-маркер matched |
-| Автоматизация бизнеса | [ever-co/ever-gauzy](https://github.com/ever-co/ever-gauzy) | Ever® Gauzy™ - Open Business Management Platform (ERP/CRM/HRM/ATS/PM) - https:// | лимит: уже 3 рекомендованных |
-| Автоматизация бизнеса | [Hash-7777/HashCortX](https://github.com/Hash-7777/HashCortX) | A local-first AI workspace — multi-provider chat, an autonomous coding agent, 3D | лимит: уже 3 рекомендованных |
-| Автоматизация бизнеса | [Dolibarr/dolibarr](https://github.com/Dolibarr/dolibarr) | Dolibarr ERP CRM is a modern software package to manage your company or foundati | лимит: уже 3 рекомендованных |
-| Автоматизация бизнеса | [SolidInvoice/SolidInvoice](https://github.com/SolidInvoice/SolidInvoice) | Simple and elegant invoicing solution. | лимит: уже 3 рекомендованных |
-| Автоматизация бизнеса | [dynamics365ninja/d365fo-mcp-server](https://github.com/dynamics365ninja/d365fo-mcp-server) | Exposes MCP tools that prove every method, field, label and form pattern against | лимит: уже 3 рекомендованных |
-| Автоматизация бизнеса | [twentyhq/twenty](https://github.com/twentyhq/twenty) | The open alternative to Salesforce, designed for AI. | лимит: уже 3 рекомендованных |
-| Автоматизация бизнеса | [Chengchcc/my-agent-team](https://github.com/Chengchcc/my-agent-team) | Monorepo for a multi-agent workspace: protocol-first agent runtime with plugin h | лимит: уже 3 рекомендованных |
-| Автоматизация бизнеса | [fidetolabs/qanat](https://github.com/fidetolabs/qanat) | Agent-native workflow engine for building and backtesting alphas as DAGs. | слой1: автор <30д и единственный репо |
-| Упаковка и производство | [moff-station/moff-station-14](https://github.com/moff-station/moff-station-14) | A fork of upstream Space Station 14 with a focus on silly antics, custom content | релевантность: false positive (VPN/BLAS/игра, не упаковка) |
-| Упаковка и производство | [cool-japan/oxiblas](https://github.com/cool-japan/oxiblas) | OxiBLAS is a production-grade, pure Rust implementation of BLAS (Basic Linear Al | релевантность: false positive (VPN/BLAS/игра, не упаковка) |
-| Упаковка и производство | [821869798/carton](https://github.com/821869798/carton) | A Windows and Linux GUI client for sing-box.(主打高性能和易用性，非electron tauri等web套皮) | релевантность: false positive (VPN/BLAS/игра, не упаковка) |
-| Упаковка и производство | [kpcyrd/sn0int](https://github.com/kpcyrd/sn0int) | Semi-automatic OSINT framework and package manager | релевантность: не про упаковку/производство |
-| Упаковка и производство | [NixOS/nixpkgs](https://github.com/NixOS/nixpkgs) | Nix Packages collection & NixOS | релевантность: package manager / не упаковка |
-| Упаковка и производство | [abakh/nbsdgames](https://github.com/abakh/nbsdgames) | A package of 21 new, improved, text-based games. Some are entirely original idea | релевантность: не про упаковку/производство |
-| Упаковка и производство | [alpinelinux/aports](https://github.com/alpinelinux/aports) | [MIRROR] Alpine packages build scripts | релевантность: не про упаковку/производство |
-| Упаковка и производство | [nix-community/NUR](https://github.com/nix-community/NUR) | Nix User Repository: User contributed nix packages [maintainer=@Pandapip1] | релевантность: package manager / не упаковка |
-| Упаковка и производство | [Homebrew/homebrew-core](https://github.com/Homebrew/homebrew-core) | 🍻 Default and OSS formulae (built-from-source packages) for the package manager  | релевантность: package manager / не упаковка |
-| Упаковка и производство | [ebrasha/abdal-proxy-hub](https://github.com/ebrasha/abdal-proxy-hub) | A curated list of free, tested proxies by EbraSha — updated every 10 minutes for | релевантность: не про упаковку/производство |
-| Упаковка и производство | [Homebrew/homebrew-cask](https://github.com/Homebrew/homebrew-cask) | 🍻 Default casks (upstream binary packages) for the package manager for everywher | релевантность: package manager / не упаковка |
-| Упаковка и производство | [ebrasha/free-v2ray-public-list](https://github.com/ebrasha/free-v2ray-public-list) | A simple and always-updated list of free, working V2Ray servers. including SS, S | релевантность: VPN/crypto/proxy junk |
-| Упаковка и производство | [psd-tools/psd-tools](https://github.com/psd-tools/psd-tools) | Python package for reading Adobe Photoshop PSD files | релевантность: не про упаковку/производство |
-| Упаковка и производство | [Colorado-Mesh/mesh-client](https://github.com/Colorado-Mesh/mesh-client) | Cross-platform Electron desktop client for Meshtastic, MeshCore, and Reticulum o | релевантность: не про упаковку/производство |
-| Упаковка и производство | [termux/termux-packages](https://github.com/termux/termux-packages) | A package build system for Termux. | релевантность: не про упаковку/производство |
-| Упаковка и производство | [dpangestuw/Free-Proxy](https://github.com/dpangestuw/Free-Proxy) | Free Proxy List 🔄 Update Every 5 Minutes | релевантность: не про упаковку/производство |
-| Упаковка и производство | [hashgraph-online/awesome-codex-plugins](https://github.com/hashgraph-online/awesome-codex-plugins) | A curated list of awesome OpenAI Codex / ChatGPT plugins, skills, and resources. | релевантность: не про упаковку/производство |
-| Упаковка и производство | [Piebald-AI/awesome-gemini-cli](https://github.com/Piebald-AI/awesome-gemini-cli) | A curated list of awesome tools, extensions, and resources for Gemini CLI. | релевантность: не про упаковку/производство |
-| Упаковка и производство | [mthcht/awesome-lists](https://github.com/mthcht/awesome-lists) | Awesome Security lists for SOC/CERT/CTI | релевантность: не про упаковку/производство |
-| Упаковка и производство | [boring-o11y/awesome-horizon](https://github.com/boring-o11y/awesome-horizon) | Curated list of awesome Laravel Horizon related resources | релевантность: не про упаковку/производство |
-| Упаковка и производство | [Piebald-AI/awesome-gemini-cli-extensions](https://github.com/Piebald-AI/awesome-gemini-cli-extensions) | A curated list of awesome Gemini CLI extensions. | релевантность: не про упаковку/производство |
-| Упаковка и производство | [ErcinDedeoglu/proxies](https://github.com/ErcinDedeoglu/proxies) | 🔍💻🔒🌀🔄🌟🚀📂📈 Need a daily updated proxy list? Look no further! Our PROXY list offer | релевантность: не про упаковку/производство |
-| Упаковка и производство | [sudhakar3697/awesome-electron-alternatives](https://github.com/sudhakar3697/awesome-electron-alternatives) | A curated list of awesome Electron alternatives. | релевантность: не про упаковку/производство |
-| Упаковка и производство | [babalae/bettergi-scripts-list](https://github.com/babalae/bettergi-scripts-list) | BetterGI 的脚本仓库，内含BetterGI 的JS脚本、路径追踪、战斗策略、七圣召唤策略。 | релевантность: не про упаковку/производство |
-| Упаковка и производство | [hashgraph-online/awesome-ai-plugins](https://github.com/hashgraph-online/awesome-ai-plugins) | A curated list of the best awesome AI plugins for AI assistants including Claude | релевантность: не про упаковку/производство |
-| Упаковка и производство | [DraconDev/pi-goal-list-loop-audit](https://github.com/DraconDev/pi-goal-list-loop-audit) | Goal. Loop. Audit. Done. A pi-coding-agent extension that supervises long-runnin | релевантность: не про упаковку/производство |
-| Упаковка и производство | [sm-monirulislam/Upcoming-and-Live-Sports-Data](https://github.com/sm-monirulislam/Upcoming-and-Live-Sports-Data) | Automatically updated list of Sports   Matches data and Links (provided as json- | релевантность: не про упаковку/производство |
-| Telegram-боты | [Mak5er/Downloader-Bot](https://github.com/Mak5er/Downloader-Bot) | Social media downloader Bot on Telegram | релевантность: media downloader, слабо для бизнес-ботов БОКСМАРТ |
-| Telegram-боты | [Cleverfuxaqo1668/Polymarket-Telegram-Bot](https://github.com/Cleverfuxaqo1668/Polymarket-Telegram-Bot) | A handy Polymarket prediction bot for Telegram. | релевантность: VPN/crypto/proxy junk |
-| Telegram-боты | [MateEke/picture-frame](https://github.com/MateEke/picture-frame) | A self-hosted digital picture frame for the Raspberry Pi: a single Go binary tha | релевантность: нет признаков Telegram-бота |
-| Telegram-боты | [brandonp2412/Quitter](https://github.com/brandonp2412/Quitter) | Private, offline addiction-recovery and sobriety tracker with milestones, journa | релевантность: нет признаков Telegram-бота |
-| Telegram-боты | [easylist/easylist](https://github.com/easylist/easylist) | EasyList filter subscription (EasyList, EasyPrivacy, EasyList Cookie, Fanboy's S | релевантность: нет признаков Telegram-бота |
-| Telegram-боты | [schorschii/CustomerDB-Android](https://github.com/schorschii/CustomerDB-Android) | Customer Database Android App | релевантность: нет признаков Telegram-бота |
-| Telegram-боты | [max-baz/yubikey-touch-detector](https://github.com/max-baz/yubikey-touch-detector) | A tool to detect when your YubiKey is waiting for a touch (to send notification  | релевантность: нет признаков Telegram-бота |
-| Telegram-боты | [juwairiyah09/spike-angular-pro-starter](https://github.com/juwairiyah09/spike-angular-pro-starter) | Spike Angular 2026: Ultimate Free Material Admin Template for Modern Dashboards | релевантность: нет признаков Telegram-бота |
-| Telegram-боты | [Tecso-Dev/SorinFlow-DaTA-mAmager](https://github.com/Tecso-Dev/SorinFlow-DaTA-mAmager) | Divar property scraping, inventory and real-estate CRM in one Persian/RTL worksp | релевантность: нет признаков Telegram-бота |
-| Telegram-боты | [appsinacup/gamend](https://github.com/appsinacup/gamend) | Open source Elixir game server with authentication, users, lobbies, groups, part | релевантность: нет признаков Telegram-бота |
-| Telegram-боты | [starlake-ai/quack-on-demand](https://github.com/starlake-ai/quack-on-demand) | Production-grade Arrow FlightSQL gateway in front of DuckDB Quack + DuckLake. Mu | релевантность: нет признаков Telegram-бота |
-| Telegram-боты | [tsugiproject/tsugi](https://github.com/tsugiproject/tsugi) | Tsugi Admin, Developer, and Management Console (pls join the dev list) | релевантность: нет признаков Telegram-бота |
-| Telegram-боты | [wshm-dev/wshm](https://github.com/wshm-dev/wshm) | AI-powered repository agent for GitHub, GitLab, Gitea, Azure DevOps. Issue triag | релевантность: нет признаков Telegram-бота |
-| Telegram-боты | [BEDOLAGA-DEV/remnawave-bedolaga-telegram-bot](https://github.com/BEDOLAGA-DEV/remnawave-bedolaga-telegram-bot) | Система для продажи подписок в тг и вебе с вебадминкой интегрированный c Remnawa | gate: relevance |
-| Telegram-боты | [aiogram/aiogram](https://github.com/aiogram/aiogram) | aiogram is a modern and fully asynchronous framework for Telegram Bot API writte | gate: dw |
-| Next.js и веб | [lingdojo/kana-dojo](https://github.com/lingdojo/kana-dojo) | Aesthetic, minimalist platform for learning Japanese inspired by Duolingo and Mo | релевантность: учебный/игровой проект, не SaaS/dashboard |
-| Next.js и веб | [rahmanef63/mso](https://github.com/rahmanef63/mso) | Browser-based graphical shell and control plane for a Linux server you own — rea | слой4: скам-маркер matched |
-| Next.js и веб | [BanManagement/BanManager-WebUI](https://github.com/BanManagement/BanManager-WebUI) | Web interface for BanManager using Next.js/React/GraphQL | релевантность: учебный/игровой проект, не SaaS/dashboard |
-| Next.js и веб | [AnYiEE/touhou-mystia-izakaya-assistant](https://github.com/AnYiEE/touhou-mystia-izakaya-assistant) | 为游戏《东方夜雀食堂》所打造的辅助工具，旨在为玩家的游玩过程提供帮助。使用React、Tailwind CSS和Next.js开发和构建。 | релевантность: учебный/игровой проект, не SaaS/dashboard |
-| Next.js и веб | [react18-tools/turborepo-template](https://github.com/react18-tools/turborepo-template) | Template for creating React 19 / Next.js 15 libraries | лимит: уже 3 рекомендованных |
-| Next.js и веб | [prisma/fullstack-prisma-nextjs-blog](https://github.com/prisma/fullstack-prisma-nextjs-blog) | Fullstack Blog with Next.js and Prisma | лимит: уже 3 рекомендованных |
-| Next.js и веб | [tutur3u/platform](https://github.com/tutur3u/platform) | Tuturuuu is an AI-native, open-source workspace that unifies tasks, scheduling,  | лимит: уже 3 рекомендованных |
-| Next.js и веб | [spree/spree](https://github.com/spree/spree) | Open Source Platform for DTC, B2B Commerce, Marketplaces & Omnichannel. REST API | лимит: уже 3 рекомендованных |
-| Next.js и веб | [tostesdaniel/rust-conveyor-filters](https://github.com/tostesdaniel/rust-conveyor-filters) | Web app built with Next.js for managing Conveyor Filters for video game Rust by  | лимит: уже 3 рекомендованных |
-| Кибербезопасность | [xiayu1987/noobot](https://github.com/xiayu1987/noobot) | Cheapest Money-Saving Self-hosted AI agent workspace with tool calling, MCP, mul | релевантность: нет security-сигнала |
-| Кибербезопасность | [ShlomiPorush/mailcow-logs-viewer](https://github.com/ShlomiPorush/mailcow-logs-viewer) | A modern, self-hosted dashboard for viewing and analyzing mailcow mail server lo | релевантность: нет security-сигнала |
-| Кибербезопасность | [matze/wastebin](https://github.com/matze/wastebin) | wastebin is a pastebin 📝 | релевантность: нет security-сигнала |
-| Кибербезопасность | [realchendahuang/FlareMo](https://github.com/realchendahuang/FlareMo) | Cloudflare 原生的团队知识库：一个人用是私人笔记，一个团队用是共享知识库；提供 Memos 兼容 API 与 MCP。 | релевантность: нет security-сигнала |
-| Кибербезопасность | [kirill-markin/flashcards-open-source-app](https://github.com/kirill-markin/flashcards-open-source-app) | AI-powered flashcards app built for serious daily study on iOS, Android, and the | релевантность: нет security-сигнала |
-| Кибербезопасность | [rommapp/romm](https://github.com/rommapp/romm) | A beautiful, powerful, self-hosted ROM manager and player. | релевантность: нет security-сигнала |
-| Кибербезопасность | [FreeOpenSourcePOS/FloCafe](https://github.com/FreeOpenSourcePOS/FloCafe) | Free, open-source, offline-first Point of Sale for cafes, restaurants, and food  | релевантность: нет security-сигнала |
-| Кибербезопасность | [cfal/garcon](https://github.com/cfal/garcon) | Self-hosted browser workspace to run coding agents in parallel, steer work as it | релевантность: нет security-сигнала |
-| Кибербезопасность | [HarnessRouter/harnessrouter](https://github.com/HarnessRouter/harnessrouter) | HarnessRouter Community Edition: the self-hosted, Apache-2.0 edition of the unif | релевантность: нет security-сигнала |
-| Кибербезопасность | [eullm/eullm](https://github.com/eullm/eullm) | Open-source platform for creating, distributing and running sovereign EU-complia | релевантность: нет security-сигнала |
-| Кибербезопасность | [preloopdev/preloop](https://github.com/preloopdev/preloop) | agent-native, drop-in Github Actions that can run locally or self-hosted in micr | релевантность: нет security-сигнала |
-| Кибербезопасность | [dgtlmoon/changedetection.io](https://github.com/dgtlmoon/changedetection.io) | Best and simplest tool for website change detection, web page monitoring, and we | релевантность: нет security-сигнала |
-| Кибербезопасность | [bug-ops/deps-lsp](https://github.com/bug-ops/deps-lsp) | Universal LSP server for dependency management — autocomplete, version hints, di | слой4: скам-маркер matched |
-| Кибербезопасность | [hackerai-tech/hackerai](https://github.com/hackerai-tech/hackerai) | Find and fix vulnerabilities by chatting with AI | лимит: уже 3 рекомендованных |
-| Кибербезопасность | [berylliumsec/nebula](https://github.com/berylliumsec/nebula) | AI-powered penetration testing assistant for automating recon, note-taking, and  | лимит: уже 3 рекомендованных |
-| Кибербезопасность | [SecObserve/SecObserve](https://github.com/SecObserve/SecObserve) | SecObserve is an open source vulnerability and license management system for sof | лимит: уже 3 рекомендованных |
-| Кибербезопасность | [nomi-sec/PoC-in-GitHub](https://github.com/nomi-sec/PoC-in-GitHub) | 📡 PoC auto collect from GitHub. ⚠️ Be careful Malware. | лимит: уже 3 рекомендованных |
-| Кибербезопасность | [vigolium/vigolium](https://github.com/vigolium/vigolium) | Vigolium - High-fidelity vulnerability scanner fusing agentic AI with native spe | лимит: уже 3 рекомендованных |
-| Кибербезопасность | [sec0ps/va-pt](https://github.com/sec0ps/va-pt) | The VAPT Toolkit provides a streamlined way to install, configure, and maintain  | лимит: уже 3 рекомендованных |
-| Кибербезопасность | [dependency-check/dependency-check-gradle](https://github.com/dependency-check/dependency-check-gradle) | The dependency-check gradle plugin is a Software Composition Analysis (SCA) tool | лимит: уже 3 рекомендованных |
-| Кибербезопасность | [0xMarcio/pocindex](https://github.com/0xMarcio/pocindex) | Search 82,000+ public CVE proof-of-concept exploits from GitHub, Nuclei, Exploit | лимит: уже 3 рекомендованных |
-| 3D и печать | [autonomous-ai/openharness](https://github.com/autonomous-ai/openharness) | polymath harness | релевантность: agent harness, слабо как 3D-инструмент |
-| 3D и печать | [Forbes-Automotive/OpenHaldex-C6](https://github.com/Forbes-Automotive/OpenHaldex-C6) | OpenHaldex - an opensource Haldex AWD controller firmware for ESP32-C6 supportin | релевантность: авто-прошивка, не 3D/CAD |
-| 3D и печать | [kellerlabs/homeracker](https://github.com/kellerlabs/homeracker) | A fully modular 3D-printable rack-building system | лимит: уже 3 рекомендованных |
-| 3D и печать | [Edwardhehe/batchPrintZWCAD](https://github.com/Edwardhehe/batchPrintZWCAD) | cad批量打印 | лимит: уже 3 рекомендованных |
-| 3D и печать | [Subash1017/ArchiCAD-Workflow-Tools](https://github.com/Subash1017/ArchiCAD-Workflow-Tools) | BIM Architectural Design Software 2026 Free Trial Full Features | лимит: уже 3 рекомендованных |
-| 3D и печать | [fanhao375/microduck-replica](https://github.com/fanhao375/microduck-replica) | Microduck 复刻 · 从官方 MJCF 与 Rust 源码反推出的装配图、CAD 装配体与完整电控方案 / Mechanical + electroni | лимит: уже 3 рекомендованных |
-| 3D и печать | [Eraxty/Atlas](https://github.com/Eraxty/Atlas) | opensource indexer for usenet | релевантность: не 3D/CAD/печать |
-| 3D и печать | [asyncvlsi/act](https://github.com/asyncvlsi/act) | ACT hardware description language and core tools. | лимит: уже 3 рекомендованных |
-| 3D и печать | [andrich-software/asERP](https://github.com/andrich-software/asERP) | OpenSource, self-hosted, client/server-based ERP system with multiplatform GUI w | релевантность: не 3D/CAD/печать |
-| Музыкальное производство | [AdaLovelace1304/cubase-score-sync](https://github.com/AdaLovelace1304/cubase-score-sync) | отсеян | релевантность: не музыка / SEO-спам |
-| Музыкальное производство | [Freika/dawarich](https://github.com/Freika/dawarich) | отсеян | релевантность: не музыка / SEO-спам |
-| Музыкальное производство | [MillenniumDawn/Millennium-Dawn](https://github.com/MillenniumDawn/Millennium-Dawn) | Millennium Dawn and it's codebase. | релевантность: не музыка |
-| Музыкальное производство | [TryGhost/Dawn](https://github.com/TryGhost/Dawn) | A minimal newsletter theme for Ghost | релевантность: не музыка |
-| Музыкальное производство | [williamchristian273/Reason-Studio-Rack-Toolkit](https://github.com/williamchristian273/Reason-Studio-Rack-Toolkit) | Top Reason Studios Rack DAW Plugins & Workflow Tools 2026 | лимит: уже 3 рекомендованных |
-| Музыкальное производство | [song39641-spec/Reaper-DAW-Workstation-Pro](https://github.com/song39641-spec/Reaper-DAW-Workstation-Pro) | Cockos REAPER Pro 2026 Free Download Full Version Lightweight Audio DAW | лимит: уже 3 рекомендованных |
-| Музыкальное производство | [rizki-haridputra/Melody-Forge-Engine](https://github.com/rizki-haridputra/Melody-Forge-Engine) | AI-Powered Music Production & Live Coding Software 2026 | лимит: уже 3 рекомендованных |
-| Музыкальное производство | [jtr21300/MAGIX-Music-Maker-Quickstart](https://github.com/jtr21300/MAGIX-Music-Maker-Quickstart) | Best MAGIX Music Maker Premium Setup 2026 AI Music Production Suite | лимит: уже 3 рекомендованных |
-| Музыкальное производство | [google/dawn](https://github.com/google/dawn) | Native WebGPU implementation. Mirror of https://dawn.googlesource.com/dawn. File | лимит: уже 3 рекомендованных |
-| Музыкальное производство | [johnnovak/Nuked-SC55-CLAP](https://github.com/johnnovak/Nuked-SC55-CLAP) | Nuked SC-55 CLAP audio plugin | лимит: уже 3 рекомендованных |
-| Коммерческие SaaS-заготовки | [caura-ai/caura](https://github.com/caura-ai/caura) | governed shared memory for AI agent fleets | релевантность: agent memory infra, не SaaS boilerplate |
-| Коммерческие SaaS-заготовки | [Yanyutin753/LambChat](https://github.com/Yanyutin753/LambChat) | agent infra | релевантность: agent infra, не SaaS boilerplate |
-| Коммерческие SaaS-заготовки | [leadita/tech-stack-datasets](https://github.com/leadita/tech-stack-datasets) | Open datasets of companies & websites grouped by technologies they use (CSV & JS | релевантность: датасет, не SaaS-заготовка |
-| Коммерческие SaaS-заготовки | [OpenByteInc/QuantDinger](https://github.com/OpenByteInc/QuantDinger) | Open-source AI Trading OS, agent trading, and vibe trading, with Jev System One  | слой4: скам-маркер matched |
-| Коммерческие SaaS-заготовки | [melgarafael/DeskcommCRM](https://github.com/melgarafael/DeskcommCRM) | Open-source AI sales OS — self-hosted CRM with native AI agents + WhatsApp (WAHA | слой4: скам-маркер matched |
-| Коммерческие SaaS-заготовки | [starlake-ai/quack-on-demand](https://github.com/starlake-ai/quack-on-demand) | Production-grade Arrow FlightSQL gateway in front of DuckDB Quack + DuckLake. Mu | релевантность: infra/DB gateway, не SaaS boilerplate |
-| Коммерческие SaaS-заготовки | [whispem/minikv](https://github.com/whispem/minikv) | Distributed, multi-tenant key-value and object store in Rust, with Raft consensu | лимит: уже 3 рекомендованных |
-| Коммерческие SaaS-заготовки | [slothflowlabs/duckle](https://github.com/slothflowlabs/duckle) | Open-source ETL/ELT you deploy on your own servers or cloud. Built on DuckDB: no | лимит: уже 3 рекомендованных |
-| Коммерческие SaaS-заготовки | [Lifecycle-Innovations-Limited/claude-ops](https://github.com/Lifecycle-Innovations-Limited/claude-ops) | Business operating system for Claude Code — 57 skills, 21 agents, smart daemon.  | лимит: уже 3 рекомендованных |
-| Коммерческие SaaS-заготовки | [DEEIX-AI/DEEIX-Chat](https://github.com/DEEIX-AI/DEEIX-Chat) | An enterprise AI workspace for model routing, multimodal chat, files, tools, bil | лимит: уже 3 рекомендованных |
+# 📋 Дайджест репозиториев — 2026-09-20
+
+Кратко: рекомендовано 27 / отклонено 22 в 9 категориях.
+Окно прогона: старт 2026-09-20 22:07 / публикация 2026-09-20 22:14 (Minsk).
+
+## ✅ Рекомендованные
+
+### 📁 AI-агенты и LLM
+
+━━━━━━━━━━━━━━━━━━━━
+### #1 · [langchain-ai/deepagents](https://github.com/langchain-ai/deepagents)
+⭐ 29601 · обновлён 0 дн. назад
+
+💡 **Что это**
+Batteries-included harness для AI-агентов от команды LangChain: готовая оболочка вокруг агентного цикла (tools, память, запуск), чтобы быстрее собирать рабочих агентов, а не только прототипы в ноутбуке.
+
+🎯 **Зачем может подойти**
+Прямо под стек Cursor/агентов: можно собрать внутреннего помощника по прайсам, FAQ или разбору заказов без написания оркестрации с нуля. Для БОКСМАРТ — каркас, не готовый ERP.
+
+🛠 **Как применить**
+1. **Коротко:** Собрать агента по прайс-листам и спецификациям коробок.
+   **Простыми словами:** Агент отвечает по вашим файлам, а не «из головы».
+   **Пример:** Менеджер спрашивает в чате минимальный тираж лотка — агент ищет в прайсе и отвечает с оговорками.
+2. **Коротко:** Прототип tool-calling под CRM/калькулятор.
+   **Простыми словами:** Агент вызывает ваши функции (цена, остаток), а не только болтает.
+   **Пример:** Запрос «пересчитай заказ с новым гофрокартоном» дергает формулу калькулятора.
+3. **Коротко:** Учебный эталон перед своим runtime.
+   **Простыми словами:** Сначала понять паттерны harness, потом решать — свой сервис или готовый.
+   **Пример:** Сравнить deepagents с self-hosted оркестратором перед пилотом на VPS.
+
+🔒 **Безопасность**
+нет данных; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT.
+
+━━━━━━━━━━━━━━━━━━━━
+### #2 · [hivecommons/hive](https://github.com/hivecommons/hive)
+⭐ 55 · обновлён 0 дн. назад
+
+💡 **Что это**
+Оркестратор «флота» AI-агентов: открытый и закрытый софт, кастомизация ролей и маршрутизация задач между агентами.
+
+🎯 **Зачем может подойти**
+Полезно, если несколько агентов делят backlog (код / документы / операционка). Для производства применимость средняя — скорее R&D автоматизации, чем MES.
+
+🛠 **Как применить**
+1. **Коротко:** Разделить роли: код, ревью, документация.
+   **Простыми словами:** Разные агенты делают разные куски одной задачи.
+   **Пример:** Один агент правит Next.js-форму заказа, другой пишет changelog для склада.
+2. **Коротко:** Пилот multi-agent на внутреннем backlog.
+   **Простыми словами:** Очередь задач без ручной перекладки между чатами.
+   **Пример:** Задачи «сайт / бот / калькулятор» идут разным агентам из одного списка.
+3. **Коротко:** Сравнить с одноагентным Cursor-flow.
+   **Простыми словами:** Понять, нужен ли флот или хватает одного агента.
+   **Пример:** Неделя пилота на 5 типовых задачах команды.
+
+🔒 **Безопасность**
+нет данных; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: Apache-2.0.
+
+━━━━━━━━━━━━━━━━━━━━
+### #3 · [OpenHands/software-agent-sdk](https://github.com/OpenHands/software-agent-sdk)
+⭐ 1144 · обновлён 0 дн. назад
+
+💡 **Что это**
+Модульный SDK OpenHands V1 для сборки software-агентов: чистые примитивы вместо монолитного ассистента.
+
+🎯 **Зачем может подойти**
+Если нужен свой агент разработки/поддержки под репозитории команды (Next.js, боты) — SDK даёт каркас. Не замена Cursor, а вариант self-hosted агента.
+
+🛠 **Как применить**
+1. **Коротко:** Self-hosted агент по репозиторию калькулятора.
+   **Простыми словами:** Агент правит код у вас на сервере по правилам команды.
+   **Пример:** Тикет «добавь коэффициент отходов» → PR с правкой формулы.
+2. **Коротко:** Встроить агента в внутренний portal.
+   **Простыми словами:** Кнопка «спросить агента» в админке, не отдельный чат.
+   **Пример:** В CRM кнопка «опиши статус заказа клиенту».
+3. **Коротко:** Изучить modular agent API.
+   **Простыми словами:** Понять блоки SDK до выбора продукта.
+   **Пример:** Spike на одной задаче рефакторинга.
+
+🔒 **Безопасность**
+нет данных; fake stars — не проверяли (квота shortlist); скам-маркеров не найдено. Лицензия: MIT.
+
+### 📁 Автоматизация бизнеса
+
+━━━━━━━━━━━━━━━━━━━━
+### #4 · [Dolibarr/dolibarr](https://github.com/Dolibarr/dolibarr)
+⭐ 7637 · обновлён 0 дн. назад
+
+💡 **Что это**
+Классический open-source ERP/CRM: контрагенты, счета, склад, проекты — веб-пакет для малого и среднего бизнеса.
+
+🎯 **Зачем может подойти**
+Прямой кандидат на учёт заказов и клиентов для упаковочного производства, если Excel уже трещит. Нужна настройка под гофру/тиражи, из коробки «коробки» нет.
+
+🛠 **Как применить**
+1. **Коротко:** Завести клиентов и счета вместо таблиц.
+   **Простыми словами:** Единая карточка клиента и история документов.
+   **Пример:** Счёт на тираж лотков уходит из Dolibarr, а не из Word.
+2. **Коротко:** Склад материалов и готовой продукции.
+   **Простыми словами:** Видно остатки картона и коробок.
+   **Пример:** Перед запуском тиража проверка остатка трёхслойки.
+3. **Коротко:** Пилот на одном потоке заказов.
+   **Простыми словами:** Не мигрировать всё сразу — один тип изделий.
+   **Пример:** Только стандартные четырёхклапанные коробки 3 месяца.
+
+🔒 **Безопасность**
+Scorecard 5.7; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: GPL-3.0.
+
+━━━━━━━━━━━━━━━━━━━━
+### #5 · [ever-co/ever-gauzy](https://github.com/ever-co/ever-gauzy)
+⭐ 7807 · обновлён 0 дн. назад
+
+💡 **Что это**
+Ever Gauzy — open business platform (ERP/CRM/HRM/ATS/PM) с современным стеком, ориентир на управление компанией и людьми.
+
+🎯 **Зачем может подойти**
+Шире «просто склад»: продажи, проекты, HR. Для БОКСМАРТ может закрыть CRM+задачи, но внедрение тяжелее Dolibarr/Akaunting.
+
+🛠 **Как применить**
+1. **Коротко:** CRM сделок по B2B-упаковке.
+   **Простыми словами:** Воронка от запроса до отгрузки.
+   **Пример:** Лид «нужны лотки под ягоды» ведётся до счёта.
+2. **Коротко:** Учёт задач внедрения сайта/бота.
+   **Простыми словами:** Проекты IT и производства в одном месте.
+   **Пример:** Доска задач «калькулятор / Telegram-уведомления».
+3. **Коротко:** Сравнить с Dolibarr по TCO.
+   **Простыми словами:** Что проще админить команде без выделенного IT.
+   **Пример:** Два пилота по выходным на копии данных.
+
+🔒 **Безопасность**
+нет данных; fake stars — не проверяли (квота shortlist); скам-маркеров не найдено. Лицензия: AGPL-3.0.
+
+━━━━━━━━━━━━━━━━━━━━
+### #6 · [akaunting/akaunting](https://github.com/akaunting/akaunting)
+⭐ 10130 · обновлён 0 дн. назад
+
+💡 **Что это**
+Онлайн-бухгалтерия/учёт open-source: счета, расходы, мультивалютность, ориентир на малый бизнес.
+
+🎯 **Зачем может подойти**
+Если нужен лёгкий контур счетов и платежей без полного ERP. Для производства склад/MES слабые — лучше как финансы рядом с отдельным калькулятором.
+
+🛠 **Как применить**
+1. **Коротко:** Выставлять счета клиентам из одного места.
+   **Простыми словами:** Красивые счета вместо ручных PDF.
+   **Пример:** Счёт за 5 тыс. лотков с НДС/без по правилам.
+2. **Коротко:** Контроль расходов подрядчиков.
+   **Простыми словами:** Видеть, куда уходят деньги на картон и логистику.
+   **Пример:** Ежемесячный отчёт по закупкам гофры.
+3. **Коротко:** Интеграция оплаты позже.
+   **Простыми словами:** Сначала учёт, потом эквайринг.
+   **Пример:** Ссылка на оплату после пилота выставления счетов.
+
+🔒 **Безопасность**
+Scorecard 4.2; fake stars — не проверяли (квота shortlist); скам-маркеров не найдено. Лицензия: NOASSERTION.
+
+### 📁 Упаковка и производство
+
+━━━━━━━━━━━━━━━━━━━━
+### #7 · [SMEWebify/WebErpMesv2](https://github.com/SMEWebify/WebErpMesv2)
+⭐ 216 · обновлён 1 дн. назад
+
+💡 **Что это**
+Web ERP/MES: управление ресурсами и исполнением производства в вебе для промышленных SME.
+
+🎯 **Зачем может подойти**
+Ближе всего к цеху: статусы работ, ресурсы, исполнение. Для упаковки нужно смотреть, насколько гибки маршруты (раскрой, склейка, отгрузка).
+
+🛠 **Как применить**
+1. **Коротко:** Статусы тиража на цехе.
+   **Простыми словами:** От «в печати» до «готово к отгрузке» без бумажек.
+   **Пример:** Мастер отмечает готовность паллеты лотков.
+2. **Коротко:** Связка заказ → производственное задание.
+   **Простыми словами:** Офисный заказ не теряется на участке.
+   **Пример:** Заказ CRM порождает задание на вырубку.
+3. **Коротко:** Оценка вместо Excel-MES.
+   **Простыми словами:** Понять, хватает ли WebErpMes или нужен qcadoo-класс.
+   **Пример:** Пилот на одной линии склейки.
+
+🔒 **Безопасность**
+нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT.
+
+━━━━━━━━━━━━━━━━━━━━
+### #8 · [kuaigeyun/kuaigeyun-mes](https://github.com/kuaigeyun/kuaigeyun-mes)
+⭐ 36 · обновлён 1 дн. назад
+
+💡 **Что это**
+КuaigeYun MES — функциональный manufacturing execution system для цифровизации производственных предприятий (интерфейс/доки преимущественно CN).
+
+🎯 **Зачем может подойти**
+Имеет смысл как референс MES-модулей (цех, прослеживаемость). Внедрение «как есть» для команды без китайского UI — слабая; скорее идеи и сравнение с WebErpMesv2.
+
+🛠 **Как применить**
+1. **Коротко:** Разобрать модули цехового учёта.
+   **Простыми словами:** Что обычно есть в MES: смены, брак, прослеживаемость.
+   **Пример:** Чеклист функций перед ТЗ своему MES.
+2. **Коротко:** Сравнить с европейским/EN-стеком.
+   **Простыми словами:** Не внедрять вслепую — сверить UX и язык.
+   **Пример:** Таблица «нужно нам / есть в kuaigeyun».
+3. **Коротко:** Идеи для калькулятора отходов.
+   **Простыми словами:** Подсмотреть, как считают брак и нормы.
+   **Пример:** Норма отходов гофры в отчёте смены.
+
+🔒 **Безопасность**
+нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: NOASSERTION.
+
+━━━━━━━━━━━━━━━━━━━━
+### #9 · [iplus-framework/iPlusMES](https://github.com/iplus-framework/iPlusMES)
+⭐ 25 · обновлён 1 дн. назад
+
+💡 **Что это**
+Manufacturing Execution System на базе iplus-framework — open MES-контур для производственного исполнения.
+
+🎯 **Зачем может подойти**
+Ещё один open MES для сравнения архитектуры. Применимость к гофропроизводству не из коробки — нужна адаптация маршрутов.
+
+🛠 **Как применить**
+1. **Коротко:** Изучить модель данных MES.
+   **Простыми словами:** Понять сущности: заказ, операция, ресурс.
+   **Пример:** Спроектировать свои таблицы под вырубку/склейку.
+2. **Коротко:** Прототип shop-floor экрана.
+   **Простыми словами:** Большой экран статуса для мастера.
+   **Пример:** Планшет на участке: текущие тиражи.
+3. **Коротко:** Не ставить в прод без пилота.
+   **Простыми словами:** Сначала тест на копии одного потока.
+   **Пример:** Только повторные заказы стандартных коробок.
+
+🔒 **Безопасность**
+нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: GPL-3.0.
+
+### 📁 Telegram-боты
+
+━━━━━━━━━━━━━━━━━━━━
+### #10 · [donbarbos/telegram-bot-template](https://github.com/donbarbos/telegram-bot-template)
+⭐ 476 · обновлён 24 дн. назад
+
+💡 **Что это**
+Шаблон Telegram-бота: Postgres, PgBouncer, Redis, Docker, аналитика — каркас продакшен-бота, а не demo echo.
+
+🎯 **Зачем может подойти**
+Ускоряет старт бизнес-ботов (уведомления, статус заказа, админка) на нормальном стеке. Не crypto/VPN.
+
+🛠 **Как применить**
+1. **Коротко:** Бот статуса заказа для клиентов.
+   **Простыми словами:** Клиент пишет номер — бот отвечает этап.
+   **Пример:** «Заказ 1042 — на склейке, отгрузка завтра».
+2. **Коротко:** Внутренние алерты цеха/офиса.
+   **Простыми словами:** Падения сайта или низкий остаток картона в чат.
+   **Пример:** Остаток трёхслойки < порога → сообщение закупкам.
+3. **Коротко:** Форк под CRM-уведомления.
+   **Простыми словами:** Новый лид из формы сразу в Telegram менеджеру.
+   **Пример:** Заявка с сайта «расчёт лотка» в группу продаж.
+
+🔒 **Безопасность**
+нет данных; fake stars — не проверяли (квота shortlist); скам-маркеров не найдено. Лицензия: MIT.
+
+━━━━━━━━━━━━━━━━━━━━
+### #11 · [Hamster-Prime/Smart_Group_Bot](https://github.com/Hamster-Prime/Smart_Group_Bot)
+⭐ 95 · обновлён 15 дн. назад
+
+💡 **Что это**
+LLM-бот для умной модерации Telegram-групп: решения, RAG-база знаний, антиспам, память, поиск.
+
+🎯 **Зачем может подойти**
+Для клиентских/партнёрских чатов и внутренней базы ответов. Не магазин-бот, а модерация+knowledge.
+
+🛠 **Как применить**
+1. **Коротко:** FAQ по упаковке в групповом чате.
+   **Простыми словами:** Бот отвечает типовые вопросы из вашей базы.
+   **Пример:** «Какой минимальный тираж?» → ответ из RAG.
+2. **Коротко:** Модерация спама в открытой группе.
+   **Простыми словами:** Меньше ручного бана рекламы.
+   **Пример:** Реклама VPN/крипты отсекается правилами.
+3. **Коротко:** Онбординг новых менеджеров.
+   **Простыми словами:** Бот подсказывает политики ответов.
+   **Пример:** Новый сотрудник спрашивает правила скидок.
+
+🔒 **Безопасность**
+нет данных; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT.
+
+━━━━━━━━━━━━━━━━━━━━
+### #12 · [innightwolfsleep/llm_telegram_bot](https://github.com/innightwolfsleep/llm_telegram_bot)
+⭐ 135 · обновлён 16 дн. назад
+
+💡 **Что это**
+Telegram-бот как интерфейс к LLM — чат с моделью в мессенджере.
+
+🎯 **Зачем может подойти**
+Простой способ дать команде «карманный» LLM без отдельного UI. Для продакшена БОКСМАРТ — скорее утилита, чем CRM.
+
+🛠 **Как применить**
+1. **Коротко:** Черновики писем клиентам в Telegram.
+   **Простыми словами:** Надиктовал задачу — получил текст письма.
+   **Пример:** «Напиши вежливый отказ по срокам на пятницу».
+2. **Коротко:** Быстрые ответы по внутренним заметкам.
+   **Простыми словами:** Если подключить свои тексты — меньше галлюцинаций.
+   **Пример:** Спросить формулировку условия доставки.
+3. **Коротко:** Не путать с shop-ботом.
+   **Простыми словами:** Это чат с моделью, не каталог и оплата.
+   **Пример:** Для магазина брать отдельный шаблон.
+
+🔒 **Безопасность**
+нет данных; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT.
+
+### 📁 Next.js и веб
+
+━━━━━━━━━━━━━━━━━━━━
+### #13 · [ItusiAI/MokerSaaS](https://github.com/ItusiAI/MokerSaaS)
+⭐ 245 · обновлён 6 дн. назад
+
+💡 **Что это**
+SaaS-стартер на Next.js для outbound-команд: auth, Stripe-подписки и кредиты, рефералка, почта, админка, i18n/SEO.
+
+🎯 **Зачем может подойти**
+Готовый каркас коммерческого веба под стек Next/Vercel — удобно для клиентского кабинета или мини-SaaS (калькулятор+подписка).
+
+🛠 **Как применить**
+1. **Коротко:** Кабинет клиента с подпиской на сервис расчёта.
+   **Простыми словами:** Логин, тариф, лимиты запросов.
+   **Пример:** Тариф «100 расчётов коробок / мес».
+2. **Коротко:** Админка пользователей и платежей.
+   **Простыми словами:** Видеть, кто оплатил и кто отвалился.
+   **Пример:** Список подписчиков B2B-калькулятора.
+3. **Коротко:** Билингвальный лендинг.
+   **Простыми словами:** RU/EN из коробки шаблона.
+   **Пример:** Лендинг сервиса для рынка BY/EU.
+
+🔒 **Безопасность**
+нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT.
+
+━━━━━━━━━━━━━━━━━━━━
+### #14 · [LubomirGeorgiev/cloudflare-workers-nextjs-saas-template](https://github.com/LubomirGeorgiev/cloudflare-workers-nextjs-saas-template)
+⭐ 783 · обновлён 2 дн. назад
+
+💡 **Что это**
+SaaS-шаблон Next.js под Cloudflare Workers — edge-деплой вместо классического Node-хостинга.
+
+🎯 **Зачем может подойти**
+Если цель — дёшево и близко к краю (Cloudflare), шаблон экономит неделю обвязки. Иначе Vercel-шаблоны проще.
+
+🛠 **Как применить**
+1. **Коротко:** Пилот SaaS на Cloudflare.
+   **Простыми словами:** Проверить, тянет ли Workers ваш стек.
+   **Пример:** Auth+billing на edge для мини-сервиса.
+2. **Коротко:** Снизить стоимость хостинга прототипа.
+   **Простыми словами:** Меньше счёта на старте.
+   **Пример:** Внутренний кабинет партнёров на CF.
+3. **Коротко:** Сравнить с Vercel boilerplate.
+   **Простыми словами:** Выбрать платформу до глубокой кастомизации.
+   **Пример:** Два spike на одну фичу «логин+страница».
+
+🔒 **Безопасность**
+нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT.
+
+━━━━━━━━━━━━━━━━━━━━
+### #15 · [tutur3u/platform](https://github.com/tutur3u/platform)
+⭐ 53 · обновлён 0 дн. назад
+
+💡 **Что это**
+Tuturuuu — open-source AI-native workspace: задачи, расписание, документы в одной платформе.
+
+🎯 **Зачем может подойти**
+Может заменить зоопарк таск-трекеров для небольшой команды. Не заточен под MES; слабая связь с производством упаковки.
+
+🛠 **Как применить**
+1. **Коротко:** Единый workspace задач IT+офис.
+   **Простыми словами:** Задачи сайта, бота и продаж в одном месте.
+   **Пример:** Доска «сайт / Telegram / калькулятор».
+2. **Коротко:** AI-помощь в планировании.
+   **Простыми словами:** Ассистент внутри workspace, не отдельный чат.
+   **Пример:** Разбить «запуск кабинета клиента» на подзадачи.
+3. **Коротко:** Оценить self-host vs Notion-like.
+   **Простыми словами:** Нужен ли свой хостинг workspace.
+   **Пример:** Неделя пилота на 3 пользователях.
+
+🔒 **Безопасность**
+нет данных; fake stars — не проверяли (квота shortlist); скам-маркеров не найдено. Лицензия: Apache-2.0.
+
+### 📁 Кибербезопасность
+
+━━━━━━━━━━━━━━━━━━━━
+### #16 · [falcosecurity/prempti](https://github.com/falcosecurity/prempti)
+⭐ 210 · обновлён 1 дн. назад
+
+💡 **Что это**
+Слой политик и видимости на базе Falco для AI coding agents — контроль того, что агенты делают в окружении.
+
+🎯 **Зачем может подойти**
+Релевантно стеку Cursor/агентов: снизить риск, что агент утечёт в секреты или опасные команды. Для инфры БОКСМАРТ — плюс к гигиене.
+
+🛠 **Как применить**
+1. **Коротко:** Политики для агента на CI/dev-машине.
+   **Простыми словами:** Алерты, если агент лезет не туда.
+   **Пример:** Попытка читать .env → событие Falco.
+2. **Коротко:** Аудит действий агентов.
+   **Простыми словами:** Логи «кто что сделал» для разбора инцидентов.
+   **Пример:** Постмортем: агент удалил не тот файл.
+3. **Коротко:** Пилот рядом с Trivy/секретами.
+   **Простыми словами:** Runtime-контроль дополняет сканеры.
+   **Пример:** Связка gitleaks + prempti на одном репо.
+
+🔒 **Безопасность**
+нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: Apache-2.0.
+
+━━━━━━━━━━━━━━━━━━━━
+### #17 · [OWASP/DockSec](https://github.com/OWASP/DockSec)
+⭐ 484 · обновлён 0 дн. назад
+
+💡 **Что это**
+OWASP DockSec — AI-powered сканер безопасности Docker-образов, объясняет уязвимости простым языком.
+
+🎯 **Зачем может подойти**
+Если деплой идёт контейнерами (боты, Next, MES) — быстрый security-check образов без тяжёлого SIEM.
+
+🛠 **Как применить**
+1. **Коротко:** Скан образа Telegram-бота перед продом.
+   **Простыми словами:** Найти дыры в базовом образе.
+   **Пример:** Перед docker push на VPS — отчёт DockSec.
+2. **Коротко:** Объяснить CVE команде без секьюрити.
+   **Простыми словами:** Не только CVE-id, но и «что делать».
+   **Пример:** Обновить base image Node 18→20.
+3. **Коротко:** Встроить в CI.
+   **Простыми словами:** Падать пайплайн на critical.
+   **Пример:** GitHub Action на Dockerfile калькулятора.
+
+🔒 **Безопасность**
+нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT.
+
+━━━━━━━━━━━━━━━━━━━━
+### #18 · [CassiopeiaCode/CosyRedactGateway](https://github.com/CassiopeiaCode/CosyRedactGateway)
+⭐ 91 · обновлён 2 дн. назад
+
+💡 **Что это**
+Лёгкий stateless privacy gateway для LLM API: редактирует секреты до отправки в OpenAI/Anthropic и аналоги.
+
+🎯 **Зачем может подойти**
+Практично при активном использовании LLM: меньше риска утечки телефонов клиентов, токенов, внутренних цен в промптах.
+
+🛠 **Как применить**
+1. **Коротко:** Прокси между ботом и LLM.
+   **Простыми словами:** Секреты вырезаются до облака.
+   **Пример:** В промпте был API-ключ — ушёл redacted.
+2. **Коротко:** Защита клиентских ПДн в чатах.
+   **Простыми словами:** Телефоны/адреса не улетают провайдеру.
+   **Пример:** Менеджер вставил карточку клиента в запрос.
+3. **Коротко:** Политика «LLM только через gateway».
+   **Простыми словами:** Один выход наружу для всех агентов.
+   **Пример:** Cursor-агенты/скрипты бьют в CosyRedact.
+
+🔒 **Безопасность**
+нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: Apache-2.0.
+
+### 📁 3D и печать
+
+━━━━━━━━━━━━━━━━━━━━
+### #19 · [PureCutCNC/purecutcnc](https://github.com/PureCutCNC/purecutcnc)
+⭐ 82 · обновлён 0 дн. назад
+
+💡 **Что это**
+2.5D CAD/CAM workspace: проектирование деталей, траектории обработки, подготовка к CNC.
+
+🎯 **Зачем может подойти**
+Для оснастки/вырубных форм и прототипов деталей рядом с упаковкой — полезный open CAD/CAM. Не замена промышленного раскроя гофры, но ближе к цеху, чем «просто slicer».
+
+🛠 **Как применить**
+1. **Коротко:** Прототип оснастки на CNC.
+   **Простыми словами:** Нарисовать деталь и получить траекторию.
+   **Пример:** Прижим/шаблон под нестандартный лоток.
+2. **Коротко:** Обучение оператора CAM.
+   **Простыми словами:** Дешёвый стенд без дорогого ПО.
+   **Пример:** Учебный рез тестовой пластины.
+3. **Коротко:** Связка с dxfplotter/LinuxCNC позже.
+   **Простыми словами:** Цепочка CAD→G-code→станок.
+   **Пример:** Экспорт и прогон на небольшом станке.
+
+🔒 **Безопасность**
+нет данных; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: Apache-2.0.
+
+━━━━━━━━━━━━━━━━━━━━
+### #20 · [HakanSeven12/OpenCADStudio](https://github.com/HakanSeven12/OpenCADStudio)
+⭐ 2126 · обновлён 0 дн. назад
+
+💡 **Что это**
+CAD на Rust: 2D/3D черчение, DWG/DXF, GPU-ускорение — открытая CAD-приложение.
+
+🎯 **Зачем может подойти**
+Просмотр/правка DXF без Autodesk — удобно для чертежей оснастки и планировок. Для 3D-печати — смежный инструмент.
+
+🛠 **Как применить**
+1. **Коротко:** Открыть DXF от подрядчика.
+   **Простыми словами:** Быстро посмотреть чертёж без лицензии ACAD.
+   **Пример:** Проверить размеры вырубного штампа.
+2. **Коротко:** Набросать 2D контур лотка.
+   **Простыми словами:** Простой контур для обсуждения с производством.
+   **Пример:** Эскиз клапанов перед расчётом.
+3. **Коротко:** Сравнить с FreeCAD.
+   **Простыми словами:** Что удобнее команде на ежедневных чертежах.
+   **Пример:** Один и тот же DXF в обоих.
+
+🔒 **Безопасность**
+нет данных; fake stars — не проверяли (квота shortlist); скам-маркеров не найдено. Лицензия: GPL-3.0.
+
+━━━━━━━━━━━━━━━━━━━━
+### #21 · [hakanaktt/acadrust](https://github.com/hakanaktt/acadrust)
+⭐ 86 · обновлён 0 дн. назад
+
+💡 **Что это**
+Rust-библиотека для чтения/записи/инспекции CAD-файлов — не GUI, а crate для разработчиков.
+
+🎯 **Зачем может подойти**
+Если строить свой веб-просмотр чертежей или валидатор DXF в Next.js/бэкенде — полезный кирпич. Для «просто порисовать» слабая применимость.
+
+🛠 **Как применить**
+1. **Коротко:** Парсер DXF в сервисе калькулятора.
+   **Простыми словами:** Загрузка чертежа → габариты в расчёт.
+   **Пример:** Клиент загрузил DXF — система взяла длину/ширину.
+2. **Коротко:** Валидация файлов от клиентов.
+   **Простыми словами:** Отсечь битые CAD до менеджера.
+   **Пример:** API отвечает «файл не читается».
+3. **Коротко:** Не ждать как замену CAD GUI.
+   **Простыми словами:** Это библиотека, не редактор.
+   **Пример:** Для UI смотреть OpenCADStudio/FreeCAD.
+
+🔒 **Безопасность**
+нет данных; fake stars — не проверяли (квота shortlist); скам-маркеров не найдено. Лицензия: MPL-2.0.
+
+### 📁 Музыкальное производство
+
+━━━━━━━━━━━━━━━━━━━━
+### #22 · [Ardour/ardour](https://github.com/Ardour/ardour)
+⭐ 5290 · обновлён 0 дн. назад
+
+💡 **Что это**
+Профессиональная open-source DAW (цифровая аудиостанция): запись, сведение, плагины — зеркало исходников Ardour.
+
+🎯 **Зачем может подойти**
+Для музыкального продакшена электронной музыки — полноценная DAW без подписки. К бизнесу упаковки не относится.
+
+🛠 **Как применить**
+1. **Коротко:** Запись и сведение треков локально.
+   **Простыми словами:** Студия на своём компьютере.
+   **Пример:** Свести демо с VST-инструментами.
+2. **Коротко:** Отказ от подписочной DAW.
+   **Простыми словами:** Меньше зависимости от облачных лицензий.
+   **Пример:** Перенос проекта с другой DAW постепенно.
+3. **Коротко:** Работа с MIDI и плагинами.
+   **Простыми словами:** Электронная музыка на стоке Ardour.
+   **Пример:** Сессия с барабанами+синтезаторами.
+
+🔒 **Безопасность**
+Scorecard 3.5; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: NOASSERTION.
+
+━━━━━━━━━━━━━━━━━━━━
+### #23 · [JonET/monksynth](https://github.com/JonET/monksynth)
+⭐ 459 · обновлён 0 дн. назад
+
+💡 **Что это**
+Монофонический вокальный синтезатор на FOF (в духе Delay Lama) — нишевый synth-проект.
+
+🎯 **Зачем может подойти**
+Интересен для экспериментов в электронной музыке. Коммерциализация слабая; это инструмент/исследование.
+
+🛠 **Как применить**
+1. **Коротко:** Эксперимент с vocal-like тембром.
+   **Простыми словами:** Необычный синтез для трека.
+   **Пример:** Пад/лид с «голосовой» окраской.
+2. **Коротко:** Изучить FOF-синтез.
+   **Простыми словами:** Понять алгоритм на открытом коде.
+   **Пример:** Учебный патч / форк параметров.
+3. **Коротко:** Не ждать как замену Serum.
+   **Простыми словами:** Узкий synth, не полный rompler.
+   **Пример:** Один слой в аранжировке.
+
+🔒 **Безопасность**
+нет данных; fake stars — не проверяли (квота shortlist); скам-маркеров не найдено. Лицензия: MIT.
+
+━━━━━━━━━━━━━━━━━━━━
+### #24 · [andremichelle/openDAW](https://github.com/andremichelle/openDAW)
+⭐ 2140 · обновлён 0 дн. назад
+
+💡 **Что это**
+openDAW — web-based DAW (AGPL): браузерная станция для создания музыки с упором на доступность, образование и приватность данных.
+
+🎯 **Зачем может подойти**
+Интересен как современная веб-DAW и референс web-audio UX. Для «тяжёлого» продакшена сначала сравнить стабильность с Ardour.
+
+🛠 **Как применить**
+1. **Коротко:** Попробовать open DAW-workflow.
+   **Простыми словами:** Оценить UX на коротком треке.
+   **Пример:** Скелет трека за вечер.
+2. **Коротко:** Идеи для web-audio инструментов.
+   **Простыми словами:** Если делать браузерный мини-секвенсор.
+   **Пример:** Референс UI для своего pet-project.
+3. **Коротко:** Сравнение с Ardour.
+   **Простыми словами:** Что стабильнее для ежедневной работы.
+   **Пример:** Один проект — две DAW.
+
+🔒 **Безопасность**
+нет данных; fake stars — не проверяли (квота shortlist); скам-маркеров не найдено. Лицензия: AGPL-3.0.
+
+### 📁 Коммерческие SaaS-заготовки
+
+━━━━━━━━━━━━━━━━━━━━
+### #25 · [flexprice/flexprice](https://github.com/flexprice/flexprice)
+⭐ 5510 · обновлён 0 дн. назад
+
+💡 **Что это**
+Usage-based pricing & billing для разработчиков: облако или self-hosted, no-code настройка тарифов по использованию.
+
+🎯 **Зачем может подойти**
+Если запускать SaaS-калькулятор/API с оплатой за расчёты — готовый биллинг лучше самописного Stripe-кода.
+
+🛠 **Как применить**
+1. **Коротко:** Тариф «N расчётов упаковки / месяц».
+   **Простыми словами:** Считать usage и выставлять счета.
+   **Пример:** Клиент превысил 500 API-расчётов — upgrade.
+2. **Коротко:** Self-host биллинга.
+   **Простыми словами:** Данные тарифов у себя.
+   **Пример:** Внутренний billing рядом с кабинетом.
+3. **Коротко:** Быстрый прайсинг без своей биллинг-логики.
+   **Простыми словами:** Меньше кода про инвойсы.
+   **Пример:** MVP платного API за неделю.
+
+🔒 **Безопасность**
+нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: AGPL-3.0.
+
+━━━━━━━━━━━━━━━━━━━━
+### #26 · [ixartz/SaaS-Boilerplate](https://github.com/ixartz/SaaS-Boilerplate)
+⭐ 7422 · обновлён 18 дн. назад
+
+💡 **Что это**
+Популярный SaaS Boilerplate: Next.js + Tailwind + Shadcn + TypeScript, полноценный стартер продукта.
+
+🎯 **Зачем может подойти**
+Быстрый старт коммерческого веб-продукта на привычном стеке. Хорош для кабинета/подписок; не про производство.
+
+🛠 **Как применить**
+1. **Коротко:** Каркас платного кабинета.
+   **Простыми словами:** Auth, UI-kit, страницы уже есть.
+   **Пример:** Кабинет дилера упаковки с прайсами.
+2. **Коротко:** Прототип multi-page SaaS.
+   **Простыми словами:** Не собирать design system с нуля.
+   **Пример:** Онбординг + billing pages.
+3. **Коротко:** База под Vercel-деплой.
+   **Простыми словами:** Привычный пайплайн команды.
+   **Пример:** Preview-деплой каждой фичи.
+
+🔒 **Безопасность**
+нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT.
+
+━━━━━━━━━━━━━━━━━━━━
+### #27 · [juspay/hyperswitch](https://github.com/juspay/hyperswitch)
+⭐ 43620 · обновлён 0 дн. назад
+
+💡 **Что это**
+Composable open-source payments platform (PCI-oriented): оркестрация платежей, SaaS и self-host, альтернатива «только Stripe SDK».
+
+🎯 **Зачем может подойти**
+Если нужен контроль платёжного слоя (несколько провайдеров, self-host) для коммерческих продуктов. Тяжелее обычного Stripe Checkout — для серьёзного биллинга.
+
+🛠 **Как применить**
+1. **Коротко:** Мульти-провайдер оплат.
+   **Простыми словами:** Не зависеть от одного эквайера.
+   **Пример:** Fallback, если основной провайдер лежит.
+2. **Коротко:** Self-host payment orchestration.
+   **Простыми словами:** Платёжный роутинг у себя.
+   **Пример:** Единый API оплат для кабинета и бота.
+3. **Коротко:** Оценить сложность vs Stripe-only.
+   **Простыми словами:** Hyperswitch имеет смысл не на первом MVP.
+   **Пример:** Сначала Stripe, миграция при росте.
+
+🔒 **Безопасность**
+нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: Apache-2.0.
+
+## ⛔ Отклонённые
+
+| # | Категория | Репозиторий | Описание | Причина |
+|---|-----------|-------------|----------|---------|
+| — | AI-агенты и LLM | [lemma-work/lemma-platform](https://github.com/lemma-work/lemma-platform) | The open-source workspace where humans and AI agents work as one team. | слой4: curl|bash в install-скриптах |
+| — | Автоматизация бизнеса | [SolidInvoice/SolidInvoice](https://github.com/SolidInvoice/SolidInvoice) | Simple and elegant invoicing solution. | слой2: Vulnerabilities=0 при stars=972 |
+| — | Упаковка и производство | [ryanzitoo/adopt-a-pet-2026-rojo](https://github.com/ryanzitoo/adopt-a-pet-2026-rojo) | Blox Blitz 2026 – Ultimate Adopt Me Power Play | релевантность: нет manufacturing/packaging ключевых слов |
+| — | Упаковка и производство | [The412Banner/Banners-Turnip](https://github.com/The412Banner/Banners-Turnip) | Automated bleeding-edge Mesa Turnip Vulkan driver builds for Qualcomm Adreno GPU | релевантность: нет manufacturing/packaging ключевых слов |
+| — | Упаковка и производство | [JonLatane/rellm](https://github.com/JonLatane/rellm) | Delightful federated gRPC social network implemented in Rust and Elm (+ older Re | релевантность: совпадение exclude-паттерна (homebrew|meshtastic|blas|npm.?package|py…) |
+| — | Упаковка и производство | [LTplus-AG/ifc-lite](https://github.com/LTplus-AG/ifc-lite) | Open-source IFC toolkit: WebGPU rendering, columnar in-memory store, exact-arith | релевантность: совпадение exclude-паттерна (homebrew|meshtastic|blas|npm.?package|py…) |
+| — | Упаковка и производство | [ondrolexa/apsg](https://github.com/ondrolexa/apsg) | Structural geology package for Python | релевантность: нет manufacturing/packaging ключевых слов |
+| — | Упаковка и производство | [NixOS/nixpkgs](https://github.com/NixOS/nixpkgs) | Nix Packages collection & NixOS | релевантность: нет manufacturing/packaging ключевых слов |
+| — | Упаковка и производство | [gavinsimpson/gratia](https://github.com/gavinsimpson/gratia) | ggplot-based graphics and useful functions for GAMs fitted using the mgcv packag | релевантность: нет manufacturing/packaging ключевых слов |
+| — | Упаковка и производство | [ggsegverse/ggseg.extra](https://github.com/ggsegverse/ggseg.extra) | Repository for extra atlases for the ggseg-package | релевантность: нет manufacturing/packaging ключевых слов |
+| — | Упаковка и производство | [Homebrew/homebrew-cask](https://github.com/Homebrew/homebrew-cask) | 🍻 Default casks (upstream binary packages) for the package manager for everywher | релевантность: совпадение exclude-паттерна (homebrew|meshtastic|blas|npm.?package|py…) |
+| — | Упаковка и производство | [mesa/mesa](https://github.com/mesa/mesa) | Mesa is an open-source Python library for agent-based modeling, ideal for simula | релевантность: нет manufacturing/packaging ключевых слов |
+| — | Упаковка и производство | [meshtastic/Meshtastic-Android](https://github.com/meshtastic/Meshtastic-Android) | Android application for Meshtastic | релевантность: совпадение exclude-паттерна (homebrew|meshtastic|blas|npm.?package|py…) |
+| — | Упаковка и производство | [ebrasha/abdal-proxy-hub](https://github.com/ebrasha/abdal-proxy-hub) | A curated list of free, tested proxies by EbraSha — updated every 10 minutes for | релевантность: нет manufacturing/packaging ключевых слов |
+| — | Упаковка и производство | [InjectiveLabs/injective-lists](https://github.com/InjectiveLabs/injective-lists) | A place to store JSON lists for different purposes. | релевантность: нет manufacturing/packaging ключевых слов |
+| — | Telegram-боты | [BEDOLAGA-DEV/remnawave-bedolaga-telegram-bot](https://github.com/BEDOLAGA-DEV/remnawave-bedolaga-telegram-bot) | Система для продажи подписок в тг и вебе с вебадминкой интегрированный c Remnawa | релевантность: совпадение exclude-паттерна (crypto|trading|signal|vpn|proxy|v2ray|xr…) |
+| — | Telegram-боты | [aiogram/aiogram](https://github.com/aiogram/aiogram) | aiogram is a modern and fully asynchronous framework for Telegram Bot API writte | слой2: Dangerous-Workflow=0 при stars=5865 |
+| — | Telegram-боты | [ilyarolf/AiogramShopBot](https://github.com/ilyarolf/AiogramShopBot) | Open-source Telegram e-commerce bot built with Aiogram 3 for selling digital and | релевантность: совпадение exclude-паттерна (crypto|trading|signal|vpn|proxy|v2ray|xr…) |
+| — | Кибербезопасность | [mixpeek/amux](https://github.com/mixpeek/amux) | Open-source control plane for AI coding agents. Run an AI engineering team: para | слой4: curl|bash в install-скриптах |
+| — | 3D и печать | [codeofaxel/Kiln](https://github.com/codeofaxel/Kiln) | Describe it or draw it — Kiln makes it real. The open-source MCP server for 3D p | слой4: curl|bash в install-скриптах |
+| — | 3D и печать | [autonomous-ai/openharness](https://github.com/autonomous-ai/openharness) | Follow your curiosity. Build across disciplines. Open-source software and hardwa | слой4: curl|bash в install-скриптах |
+| — | 3D и печать | [go-playground/validator](https://github.com/go-playground/validator) | :100:Go Struct and Field validation, including Cross Field, Cross Struct, Map, S | слой4: curl|bash в install-скриптах |
