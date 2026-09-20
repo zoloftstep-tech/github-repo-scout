@@ -3,759 +3,759 @@
   "repos": [
     {
       "n": 1,
-      "full_name": "nam271212/strategic-advisor-orchestrator",
-      "url": "https://github.com/nam271212/strategic-advisor-orchestrator",
+      "full_name": "1f916-ai/1f916",
+      "url": "https://github.com/1f916-ai/1f916",
       "category": "AI-агенты и LLM",
-      "stars": 117,
+      "stars": 75,
       "updated_days": 0,
-      "what": "Synaptic Compass — фреймворк оркестрации, который поднимает отдельную «стратегическую» LLM рядом с основным coding-агентом (Cursor, Claude Code и др.). Второй моделью проверяются архитектурные решения, риски безопасности и слабые места до того, как агент пишет код.",
-      "why": "Команда уже работает в Cursor/Claude Code; независимый слой review снижает риск «уверенного, но кривого» кода в калькуляторах, CRM и ботах для БОКСМАРТ.",
+      "what": "Экспериментальная платформа «общества» AI-агентов без человеческого UI: агенты взаимодействуют между собой через собственные интерфейсы/протоколы. README описывает agent-to-agent среду, а не готовый бизнес-продукт.",
+      "why": "Полезно как исследование multi-agent паттернов; для БОКСМАРТ применимость слабая — нет готового CRM/калькулятора. Имеет смысл смотреть идеи оркестрации, не внедрять as-is.",
       "cases": [
         {
-          "short": "Peer-review сложных изменений в Next.js-приложениях перед merge.",
+          "short": "Изучить паттерны общения агентов без человека в контуре.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Проверка предложений агента по безопасности (секреты, доступы) в инфраструктурных скриптах.",
+          "short": "Сравнить с self-hosted оркестраторами вроде 5dive.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Разбор застрявших рефакторингов, где один агент ходит кругами.",
+          "short": "Не ставить в прод без отдельного security review (AGPL-3.0).",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: AGPL-3.0."
     },
     {
       "n": 2,
-      "full_name": "TencentCloud/TencentDB-Agent-Memory",
-      "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
+      "full_name": "5dive-ai/5dive",
+      "url": "https://github.com/5dive-ai/5dive",
       "category": "AI-агенты и LLM",
-      "stars": 27026,
+      "stars": 60,
       "updated_days": 0,
-      "what": "Командный memory-hub для AI-агентов: превращает чаты, документы и код в переиспользуемые активы (Chat Memory, Skill, LLM-Wiki, Code-Graph), которыми могут делиться разные агенты и фреймворки.",
-      "why": "При нескольких агентах и проектах (упаковка, боты, веб) общая память снижает повторные объяснения контекста БОКСМАРТ и стека.",
+      "what": "Self-hosted runtime для «компании» AI-агентов на своём сервере: именованные агенты (Claude Code, Codex и др.), оргструктура, общий backlog, handoff между агентами; человека пингуют только когда нужно решение. MIT.",
+      "why": "Прямо под стек Ростислава (Cursor/Claude Code) и сценарий one-person company: агенты ведут задачи по упаковке/ботам/вебу, эскалируя только решения.",
       "cases": [
         {
-          "short": "Общая база знаний по процессам производства/продаж для агентов.",
+          "short": "Поднять на VPS очередь задач по доработкам калькулятора упаковки.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Skills с типовыми сценариями (КП, расчёт тиража, статус заказа).",
+          "short": "Разделить роли: код / ревью / документация с handoff.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Code-graph по своим репозиториям для более точных правок.",
+          "short": "Настроить уведомления только на human-in-the-loop шаги.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT."
     },
     {
       "n": 3,
-      "full_name": "KbWen/agentic-os",
-      "url": "https://github.com/KbWen/agentic-os",
+      "full_name": "ZSeven-W/rish-app",
+      "url": "https://github.com/ZSeven-W/rish-app",
       "category": "AI-агенты и LLM",
-      "stars": 182,
+      "stars": 135,
       "updated_days": 0,
-      "what": "Governance-слой для coding-агентов: workflow plan → build → review → test → ship с проверками (git hooks/CI), а не только «просьбами» в AGENTS.md. Поддержка Cursor, Claude Code, Codex, Copilot.",
-      "why": "Прямо закрывает боль самоучки с агентами: агент говорит «готово», а тестов/ревью нет. Полезно для коммерческих и производственных репозиториев.",
+      "what": "Local-first мобильный клиент AI-агентов (iOS/Android): workspace, выполнение с approvals, выбор модели (DSH, Claude Code, Codex, GLM). README позиционирует как «pocket agent».",
+      "why": "Удобно контролировать агентов с телефона вне рабочего Mac — для выездов на производство/склад. Не замена десктопному Cursor, а мобильный пульт.",
       "cases": [
         {
-          "short": "Включить gated workflow в репозиторий калькулятора упаковки.",
+          "short": "Approve/reject действий агента по дороге.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Ловить утечки секретов и пустые тесты на pre-commit/CI.",
+          "short": "Быстрый запрос статуса задач без ноутбука.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Единые правила для Cursor и Claude Code в одном монорепо.",
+          "short": "Тест local-first агентов на устройстве без облачного UI.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT."
     },
     {
       "n": 4,
-      "full_name": "sixb-ai/sixb",
-      "url": "https://github.com/sixb-ai/sixb",
+      "full_name": "macro-inc/macro",
+      "url": "https://github.com/macro-inc/macro",
       "category": "Автоматизация бизнеса",
-      "stars": 85,
+      "stars": 4364,
       "updated_days": 0,
-      "what": "Open-source TypeScript-фреймворк для операционного ПО: данные превращаются в типизированные объекты, связи и действия, с которыми работают и люди, и AI-агенты. Есть reference-приложение (сервисная компания).",
-      "why": "Стек близкий (TS), модель «операции + агенты» хорошо ложится на заказы, статусы производства и внутренние дашборды БОКСМАРТ — но это скорее конструктор, не готовая CRM «из коробки».",
+      "what": "Open-source unified workspace: почта, чат, доки, задачи, звонки, CRM и агенты с общей AI-памятью (Rust/TS). Альтернатива связке Slack+Notion+CRM.",
+      "why": "Закрывает интерес к CRM и автоматизации в одном контуре; для малого производства может заменить разрозненные чаты/таблицы, но миграция почты/CRM — отдельный проект. AGPL-3.0.",
       "cases": [
         {
-          "short": "Прототип операционной модели заказов/отгрузок с агентным доступом.",
+          "short": "Пилот внутреннего workspace для менеджеров БОКСМАРТ.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Изучить паттерны typed domain + UI на примере Northline.",
+          "short": "CRM-карточки клиентов рядом с перепиской и задачами.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Собрать внутренний tool для менеджеров вместо разрозненных таблиц.",
+          "short": "Оценить agent memory для типовых запросов по заказам.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: AGPL-3.0."
     },
     {
       "n": 5,
-      "full_name": "xiaofang142/hivemtk",
-      "url": "https://github.com/xiaofang142/hivemtk",
+      "full_name": "erp-mafia/accounted",
+      "url": "https://github.com/erp-mafia/accounted",
       "category": "Автоматизация бизнеса",
-      "stars": 64,
+      "stars": 369,
       "updated_days": 0,
-      "what": "Self-hosted SCRM/маркетинг-система (Go + Vue): единый inbox по каналам (в т.ч. WhatsApp/Telegram), CDP, ReAct-агент с инструментами, локальный RAG. Акцент на private deployment.",
-      "why": "Интерес к Telegram-ботам и автоматизации продаж; для Беларуси/СНГ полезен self-host, но UI/доки сильно ориентированы на китайский martech — внедрение потребует адаптации.",
+      "what": "Agent-native open-source ERP: учёт/операции рассчитаны на работу через AI-агентов, а не только классические формы (по README/описанию).",
+      "why": "Интересен как лёгкая альтернатива тяжёлому Odoo для экспериментов «ERP + агенты»; зрелость экосистемы ниже классических ERP — пилот, не мгновенная замена.",
       "cases": [
         {
-          "short": "Пилот единого inbox для обращений клиентов из мессенджеров.",
+          "short": "Прототип учёта заказов/складских движений с агентным UI.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "RAG по прайсам/описаниям упаковки для ответов менеджерам.",
+          "short": "Сравнить модель данных с ObjectStack/Odoo.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Оценка, стоит ли собирать свой lighter SCRM вместо тяжёлого ERP.",
+          "short": "Проверить лицензию (NOASSERTION в GitHub) перед коммерческим использованием.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: NOASSERTION."
     },
     {
       "n": 6,
-      "full_name": "odoo/odoo",
-      "url": "https://github.com/odoo/odoo",
+      "full_name": "objectstack-ai/objectstack",
+      "url": "https://github.com/objectstack-ai/objectstack",
       "category": "Автоматизация бизнеса",
-      "stars": 54466,
+      "stars": 63,
       "updated_days": 0,
-      "what": "Классический open-source suite бизнес-приложений: CRM, склад, производство, учёт, eCommerce и т.д., с возможностью собрать полноценный ERP.",
-      "why": "Прямой кандидат на CRM/склад/производство для ООО «БОКСМАРТ»; зрелая экосистема модулей, но внедрение тяжёлое — нужна аккуратная оценка scope.",
+      "what": "Metadata-driven платформа: data model, UI, workflows и permissions как типизированные метаданные; заявлен полный CRM в одном context window для агентов. Apache-2.0.",
+      "why": "Сильный fit к идее «агенты правят бизнес-приложением»: можно описать заказы/КП/статусы упаковки компактно и дать агенту рефакторить целиком.",
       "cases": [
         {
-          "short": "Склад и отгрузки готовой упаковки.",
+          "short": "Собрать тонкий CRM заказов гофротары на метаданных.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "CRM по B2B-клиентам и коммерческим предложениям.",
+          "short": "Дать агенту читать всю модель приложения целиком.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Модуль Manufacturing под тиражи/спецификации (после пилота).",
+          "short": "Прототип permissions для менеджер/производство.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: Apache-2.0."
     },
     {
       "n": 7,
-      "full_name": "metasfresh/metasfresh",
-      "url": "https://github.com/metasfresh/metasfresh",
+      "full_name": "qcadoo/mes",
+      "url": "https://github.com/qcadoo/mes",
       "category": "Упаковка и производство",
-      "stars": 2429,
-      "updated_days": 0,
-      "what": "Open-source ERP с упором на промышленность и торговлю: заказы, склад, масштаб; web UI на React, REST API, 3-tier архитектура.",
-      "why": "Ближе к реальному производственно-торговому контуру упаковки, чем «общие SaaS-стартеры»; можно смотреть как альтернативу/референс к Odoo.",
+      "stars": 941,
+      "updated_days": 2,
+      "what": "qcadoo MES — веб-система управления производством (Manufacturing Execution): заказы, технологии, цеховой учёт. Дружелюбный open-source MES.",
+      "why": "Прямое попадание в производство упаковки: MES нужен для тиражей, смен, статусов на цехе — ближе к БОКСМАРТ, чем generic CRM.",
       "cases": [
         {
-          "short": "Учёт продаж и складских движений по тиражам.",
+          "short": "Пилот учёта производственных заказов на гофроящики.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "REST-интеграции с собственным калькулятором на Next.js.",
+          "short": "Связка статусов «в работе / готово / отгружено».",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Сравнение UX/модулей с Odoo перед выбором ERP.",
+          "short": "Оценить, хватает ли модулей под раскрой/спецификации.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "Scorecard score=3; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: NOASSERTION."
     },
     {
       "n": 8,
-      "full_name": "apache/ofbiz-plugins",
-      "url": "https://github.com/apache/ofbiz-plugins",
+      "full_name": "celerp/celerp",
+      "url": "https://github.com/celerp/celerp",
       "category": "Упаковка и производство",
-      "stars": 176,
+      "stars": 31,
       "updated_days": 0,
-      "what": "Плагины к Apache OFBiz (ERP/CRM/e-commerce/SCM/MRP): дополнения к ofbiz-framework, включая e-commerce и другие бизнес-компоненты.",
-      "why": "Имеет смысл только вместе с OFBiz framework; для БОКСМАРТ скорее учебный/архитектурный референс enterprise-процессов, чем быстрый старт.",
+      "what": "Self-hosted desktop ERP для операций бизнеса: модульное ядро, MIT-модули, без обязательного облака (по описанию).",
+      "why": "Лёгкий ERP без тяжёлого веб-внедрения; подходит для пробы контуров склад/продажи на локальной машине. Звёзд мало — смотреть активность и модули внимательно.",
       "cases": [
         {
-          "short": "Посмотреть, как устроены SCM/MRP-модули в зрелом OSS ERP.",
+          "short": "Локальный пилот склада и продаж.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Оценить e-commerce plugin для B2B-витрины.",
+          "short": "Сравнить модульность с NotrinosERP/qcadoo.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Сравнить модель данных с Carbon/Odoo.",
+          "short": "Проверить, есть ли manufacturing-модули под тиражи.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: NOASSERTION."
     },
     {
       "n": 9,
-      "full_name": "crbnos/carbon",
-      "url": "https://github.com/crbnos/carbon",
+      "full_name": "notrinos/NotrinosERP",
+      "url": "https://github.com/notrinos/NotrinosERP",
       "category": "Упаковка и производство",
-      "stars": 2559,
+      "stars": 161,
       "updated_days": 0,
-      "what": "Open-core ERP + MES + QMS для производства (сборка, contract manufacturing, configure-to-order). Стек TypeScript/React/Supabase, API-first.",
-      "why": "Один из самых релевантных хитов дня для упаковочного производства: MES/QMS ближе к цеху, чем «чистый» CRM; TS-стек совпадает с привычным веб-привычным стеком.",
+      "what": "Веб-ERP на PHP/MySQL: CRM, продажи, закупки, склад, производство, payroll; multi-user, multi-currency, workflow согласований.",
+      "why": "Классический self-hosted ERP с manufacturing — реалистичный кандидат на контур ООО «БОКСМАРТ», если не тянуть полный Odoo.",
       "cases": [
         {
-          "short": "Пилот MES: статусы заказов на производство упаковки.",
+          "short": "Склад готовой упаковки и отгрузки.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "QMS/контроль качества партий.",
+          "short": "CRM B2B-клиентов и КП.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "API-интеграция с Telegram-ботом статусов для клиентов/менеджеров.",
+          "short": "Manufacturing под спецификации тиражей.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: GPL-3.0."
     },
     {
       "n": 10,
-      "full_name": "nutgram/nutgram",
-      "url": "https://github.com/nutgram/nutgram",
+      "full_name": "fedorabakumets/telegram-bot-builder",
+      "url": "https://github.com/fedorabakumets/telegram-bot-builder",
       "category": "Telegram-боты",
-      "stars": 749,
-      "updated_days": 4,
-      "what": "PHP-фреймворк для Telegram Bot API с акцентом на удобный DX, тесты и документацию (nutgram.dev).",
-      "why": "Если часть бэкенда/хостинга удобнее на PHP, это быстрый путь к бизнес-боту (статусы заказов, уведомления). Для Next.js-стека скорее запасной вариант, не основной.",
+      "stars": 35,
+      "updated_days": 2,
+      "what": "Визуальный drag-and-drop конструктор Telegram-ботов: генерирует Python/aiogram код. React+TS frontend, Express, PostgreSQL; медиа, клавиатуры, ветвления, аналитика.",
+      "why": "Быстро собрать бота уведомлений/поддержки для клиентов БОКСМАРТ без ручного каркаса aiogram; код можно допилить в Cursor.",
       "cases": [
         {
-          "short": "Бот уведомлений о готовности тиража.",
+          "short": "Бот статуса заказа для клиентов.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Простой приём заявок с валидацией в PHP.",
+          "short": "Внутренние алерты менеджерам о готовности тиража.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Прототип support-бота с меню и FSM.",
+          "short": "Прототип FAQ по типам упаковки с клавиатурами.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT."
     },
     {
       "n": 11,
-      "full_name": "nerzh/swift-telegram-bot",
-      "url": "https://github.com/nerzh/swift-telegram-bot",
+      "full_name": "kirillDevPro/cloud-control-bot",
+      "url": "https://github.com/kirillDevPro/cloud-control-bot",
       "category": "Telegram-боты",
-      "stars": 268,
-      "updated_days": 17,
-      "what": "Swift-обёртка над Telegram Bot API (не opinionated framework): полный набор методов, примеры на Vapor/Hummingbird/Smoke.",
-      "why": "Применимость ограничена: имеет смысл только если целевой стек — Swift server-side. Для типичного Next.js/TS-типичного Next.js/TS-пути это скорее справочник API, не рабочий выбор.",
+      "stars": 35,
+      "updated_days": 6,
+      "what": "Telegram-бот мониторинга и управления облачными серверами (Vultr/Hetzner/AWS): uptime, start/stop/reboot, балансы и costs, multi-account, RU/EN.",
+      "why": "Практично для инфраструктуры (Vercel/VPS рядом с ботами и CRM): контроль с телефона и затрат. Не клиентский shop-бот, а ops-инструмент.",
       "cases": [
         {
-          "short": "Изучить полный mapping Bot API на типизированные методы.",
+          "short": "Алерты падения VPS с ботом/CRM.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Если появится Swift-сервис — быстро поднять /ping-бота.",
+          "short": "Ребут инстанса из Telegram.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Сравнить с grammy/aiogram по модели API.",
+          "short": "Контроль расходов Hetzner/AWS.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: NOASSERTION."
     },
     {
       "n": 12,
-      "full_name": "emreturkmencom/antigravity-telegram-suite",
-      "url": "https://github.com/emreturkmencom/antigravity-telegram-suite",
+      "full_name": "danog/MadelineProto",
+      "url": "https://github.com/danog/MadelineProto",
       "category": "Telegram-боты",
-      "stars": 171,
+      "stars": 3518,
       "updated_days": 0,
-      "what": "Telegram-бот для удалённого управления AI-агентом Antigravity (чат, смена моделей, оркестрация) из мессенджера.",
-      "why": "Сочетает два интереса — Telegram и AI-агенты; удобно дергать агента с телефона. Завязка на Antigravity сужает переносимость на Cursor/Claude Code.",
+      "what": "Зрелый async PHP MTProto API-клиент для Telegram: низкоуровневая работа с API (не только Bot API), боты и userbots.",
+      "why": "Если нужен PHP-стек или сценарии шире Bot API — база для кастомных интеграций. Для типичного aiogram/TS-бота может быть избыточен.",
       "cases": [
         {
-          "short": "Удалённо дать агенту задачу, пока вы на складе/в цеху.",
+          "short": "PHP-сервис уведомлений в Telegram.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Переключать модели/сессии без ноутбука.",
+          "short": "Интеграция ERP → Telegram без Bot-only ограничений.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Идея для своего бота «агент ↔ Telegram» под Cursor API/CLI.",
+          "short": "Изучить MTProto-паттерны перед выбором стека.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "Scorecard score=5.9; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: AGPL-3.0."
     },
     {
       "n": 13,
-      "full_name": "vercel/ai",
-      "url": "https://github.com/vercel/ai",
+      "full_name": "SenteLabsAI/OpenExecutive",
+      "url": "https://github.com/SenteLabsAI/OpenExecutive",
       "category": "Next.js и веб",
-      "stars": 26860,
+      "stars": 5045,
       "updated_days": 0,
-      "what": "AI SDK от создателей Next.js — provider-agnostic TypeScript-toolkit для стриминга и UI вокруг LLM в веб-приложениях.",
-      "why": "Прямой стык Next.js/Vercel-стека с AI-фичами: ассистент в калькуляторе упаковки, чат в CRM, генерация описаний — без привязки к одному провайдеру.",
+      "what": "AI «виртуальный executive team»: единая executive-персона на базе нескольких specialist-агентов (по описанию репозитория).",
+      "why": "Идея «совета директоров из агентов» полезна для приоритизации продуктов БОКСМАРТ; проверять, есть ли Next.js/self-host и какие ключи/облака требуются. Применимость к коду — косвенная.",
       "cases": [
         {
-          "short": "Чат-помощник по расчёту тиража в Next.js-приложении.",
+          "short": "Еженедельный разбор приоритетов продуктов через агентов.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Стриминг ответов LLM в кабинете менеджера.",
+          "short": "Сценарии go-to-market для новых SKU упаковки.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Единый слой под Claude/OpenAI в нескольких продуктах.",
+          "short": "Сравнить с self-hosted 5dive по контролю данных.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: NOASSERTION."
     },
     {
       "n": 14,
-      "full_name": "ixartz/Next-js-Boilerplate",
-      "url": "https://github.com/ixartz/Next-js-Boilerplate",
+      "full_name": "spree/storefront",
+      "url": "https://github.com/spree/storefront",
       "category": "Next.js и веб",
-      "stars": 13078,
+      "stars": 62,
       "updated_days": 0,
-      "what": "Зрелый boilerplate на Next.js с TypeScript, тестированием, lint/CI и типичным набором практик для production-ready старта.",
-      "why": "Быстрый каркас под веб-инструменты БОКСМАРТ (калькуляторы, кабинеты) без сборки конфига с нуля.",
+      "what": "Open-source Next.js storefront для Spree Commerce: DTC и B2B, Stripe/Adyen/PayPal, multi-region, one-page checkout. MIT.",
+      "why": "Готовый Next.js B2B/DTC витринный каркас под возможный e-commerce упаковки; стыкуется с интересом к Next/Vercel.",
       "cases": [
         {
-          "short": "Новый внутренний инструмент на App Router.",
+          "short": "Витрина стандартных коробок с checkout.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Шаблон для коммерческого SaaS-эксперимента.",
+          "short": "B2B-каталог для постоянных клиентов.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Единый baseline lint/test/CI для пет-проектов.",
+          "short": "Основа для кастомного калькулятора на App Router.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT."
     },
     {
       "n": 15,
-      "full_name": "vercel/next.js",
-      "url": "https://github.com/vercel/next.js",
+      "full_name": "eren23/openflipbook",
+      "url": "https://github.com/eren23/openflipbook",
       "category": "Next.js и веб",
-      "stars": 142390,
+      "stars": 197,
       "updated_days": 0,
-      "what": "Сам фреймворк Next.js — репозиторий исходников, issues, canary и документации рядом с кодом.",
-      "why": "Не «новый продукт», а источник правды по API/багам/RFC; полезно мониторить при активной разработке на Vercel.",
+      "what": "Open-source клон flipbook.page на Next.js + FastAPI: страницы — AI-иллюстрации, интерактивное углубление. BYO API keys.",
+      "why": "Слабая прямая связь с упаковкой/CRM; полезен как пример Next.js+AI UI и генеративного контента. Для коммерции БОКСМАРТ — скорее учебный/маркетинговый эксперимент.",
       "cases": [
         {
-          "short": "Отслеживать фиксы App Router, важные для текущих приложений.",
+          "short": "Сделать AI-буклет с линейкой упаковки.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Смотреть examples под конкретные паттерны.",
+          "short": "Изучить паттерн Next.js + FastAPI + Modal.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Участвовать/следить за discussions по нужным фичам.",
+          "short": "Не брать как основу ERP/CRM.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT."
     },
     {
       "n": 16,
-      "full_name": "owasp-dep-scan/dep-scan",
-      "url": "https://github.com/owasp-dep-scan/dep-scan",
+      "full_name": "tokenfuzz/tokenfuzz",
+      "url": "https://github.com/tokenfuzz/tokenfuzz",
       "category": "Кибербезопасность",
-      "stars": 1286,
+      "stars": 19,
       "updated_days": 0,
-      "what": "OWASP dep-scan — аудит зависимостей по известным уязвимостям, advisory и лицензионным ограничениям (next-gen SCA).",
-      "why": "Прямо про инфраструктурную гигиену веб/бот/агент-проектов: ловить уязвимые npm/pip-зависимости до продакшена.",
+      "what": "Платформа LLM-based vulnerability research: фаззинг/поиск уязвимостей с помощью моделей (по README/описанию).",
+      "why": "Для кибербезопасности инфраструктуры и agent-стека — способ искать дыры в своих сервисах. Мало звёзд — осторожный пилот.",
       "cases": [
         {
-          "short": "CI-проверка Next.js и Python-сервисов.",
+          "short": "Прогон своих API/ботов на типичные дыры.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Лицензионный аудит перед коммерциализацией.",
+          "short": "Сравнить находки с классическими сканерами (Trivy).",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Регулярный скан монорепо агентов и ботов.",
+          "short": "Не использовать на чужих системах без разрешения.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: Apache-2.0."
     },
     {
       "n": 17,
-      "full_name": "h0tak88r/AutoAR",
-      "url": "https://github.com/h0tak88r/AutoAR",
+      "full_name": "AISecurityLab/hackagent",
+      "url": "https://github.com/AISecurityLab/hackagent",
       "category": "Кибербезопасность",
-      "stars": 250,
+      "stars": 515,
       "updated_days": 0,
-      "what": "Автоматизация recon/ASM для bug bounty (сканирование, Discord-бот и т.п.). Ориентир — охота за уязвимостями во внешних целях.",
-      "why": "Для защиты своей инфраструктуры применимость частичная: скорее обучение атакующей стороне и идеи автоматизации recon, чем готовый hardening БОКСМАРТ. Не запускать против чужих систем без разрешения.",
+      "what": "Open-source toolkit для поиска уязвимостей в AI-агентах (prompt injection, tool abuse и т.п. — по позиционированию).",
+      "why": "Прямо под интерес к AI-агентам + security: перед продом агентов на данных БОКСМАРТ стоит прогнать такие проверки.",
       "cases": [
         {
-          "short": "Учиться методологии внешней разведки на своих стендах.",
+          "short": "Тест своих coding/ops-агентов на injection.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Идеи алертов в Discord/Telegram по surface changes.",
+          "short": "Регрессия после добавления новых tools.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Сравнение с defensive-стеком (Trivy/dep-scan).",
+          "short": "Чеклист перед доступом агента к CRM/секретам.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: Apache-2.0."
     },
     {
       "n": 18,
-      "full_name": "aquasecurity/trivy",
-      "url": "https://github.com/aquasecurity/trivy",
+      "full_name": "mitchellkrogza/apache-ultimate-bad-bot-blocker",
+      "url": "https://github.com/mitchellkrogza/apache-ultimate-bad-bot-blocker",
       "category": "Кибербезопасность",
-      "stars": 37990,
+      "stars": 981,
       "updated_days": 0,
-      "what": "Универсальный сканер уязвимостей контейнеров, ФС, репозиториев, IaC и секретов от Aqua Security.",
-      "why": "Практичный инструмент для self-hosted/Vercel-adjacent инфраструктуры и Docker-образов ботов/ERP-пилотов.",
+      "what": "Набор правил для Apache: блок плохих ботов, spam referrer, vulnerability scanners, malware/adware user-agents.",
+      "why": "Практичная защита веб/админок (ERP, storefront, панели) на self-hosted Apache. Для Nginx нужны аналоги/конвертация.",
       "cases": [
         {
-          "short": "Скан Docker-образов перед деплоем.",
+          "short": "Закрыть админку MES/ERP от сканеров.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Поиск секретов в репозиториях.",
+          "short": "Снизить мусорный трафик на витрине.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "IaC-проверки конфигов mistyped misconfigurations.",
+          "short": "Дополнить WAF/fail2ban.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "Scorecard score=2.5; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: NOASSERTION."
     },
     {
       "n": 19,
-      "full_name": "GridSpace/grid-apps",
-      "url": "https://github.com/GridSpace/grid-apps",
+      "full_name": "pzfreo/draftwright",
+      "url": "https://github.com/pzfreo/draftwright",
       "category": "3D и печать",
-      "stars": 900,
+      "stars": 66,
       "updated_days": 0,
-      "what": "Браузерный слайсер Kiri:Moto (3D-печать, CAM, лазер) и mesh-редактор Mesh:Tool.",
-      "why": "Прямое попадание в интерес к 3D-печати; можно резать модели без тяжёлого десктопного ПО, в т.ч. для прототипов оснастки/упаковочных макетов.",
+      "what": "Автогенерация технических чертежей из build123d и STEP-файлов.",
+      "why": "Для оснастки/3D-печати деталей и шаблонов упаковки/вспомогательной оснастки — быстрые чертежи из CAD-модели.",
       "cases": [
         {
-          "short": "Слайсинг прототипов деталей/оснастки.",
+          "short": "Чертежи из STEP для подрядчика.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Простой CAM/laser для макетов.",
+          "short": "Документация parametric-моделей build123d.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Быстрые правки mesh перед печатью.",
+          "short": "Связка с печатью прототипов оснастки.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: AGPL-3.0."
     },
     {
       "n": 20,
-      "full_name": "MarlinFirmware/Marlin",
-      "url": "https://github.com/MarlinFirmware/Marlin",
+      "full_name": "andymai/brepjs",
+      "url": "https://github.com/andymai/brepjs",
       "category": "3D и печать",
-      "stars": 17588,
+      "stars": 109,
       "updated_days": 0,
-      "what": "Прошивка Marlin для RepRap/3D-принтеров (8- и 32-bit MCU) — де-факто стандарт кастомных принтеров.",
-      "why": "Если есть или планируется свой принтер/модификация — это база прошивки; к бизнес-упаковке относится косвенно (прототипирование).",
+      "what": "Web CAD библиотека с точной B-Rep геометрией в браузере.",
+      "why": "Потенциал встроить простой CAD/просмотр геометрии в веб-калькулятор или конфигуратор упаковки (если пойдёте в 3D-превью).",
       "cases": [
         {
-          "short": "Прошивка/тюнинг личного 3D-принтера.",
+          "short": "Прототип web-превью коробки.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Понимание G-code path для интеграции с автоматизацией.",
+          "short": "Исследование B-Rep в браузере без тяжёлого desktop CAD.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Кастомные фичи стола/экструдера.",
+          "short": "Интеграция в Next.js-конфигуратор (потребует R&D).",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: Apache-2.0."
     },
     {
       "n": 21,
-      "full_name": "torbenconto/bambulabs_api",
-      "url": "https://github.com/torbenconto/bambulabs_api",
+      "full_name": "OrcaSlicer/OrcaSlicer",
+      "url": "https://github.com/OrcaSlicer/OrcaSlicer",
       "category": "3D и печать",
-      "stars": 62,
+      "stars": 15731,
       "updated_days": 0,
-      "what": "Неофициальная Golang-библиотека для связи с принтерами Bambu Lab (по README ещё в активной разработке).",
-      "why": "Узкий, но практичный кусок автоматизации печати; на статусе «unofficial/early» — ожидать ломающие изменения.",
+      "what": "Популярный G-code слайсер для 3D-принтеров (Bambu, Prusa, Voron и др.) — форк/развитие Bambu-ориентированных слайсеров.",
+      "why": "Базовый инструмент, если Ростислав печатает оснастку/прототипы; уже стандарт в экосистеме печати.",
       "cases": [
         {
-          "short": "Скрипты мониторинга очереди печати.",
+          "short": "Слайсинг прототипов оснастки.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Telegram-уведомления о завершении джобы (свой бот + эта lib).",
+          "short": "Профили под Bambu/Prusa.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Эксперименты home-lab автоматизации.",
+          "short": "Связка с API принтера для итераций.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: AGPL-3.0."
     },
     {
       "n": 22,
-      "full_name": "floe-audio/Floe",
-      "url": "https://github.com/floe-audio/Floe",
+      "full_name": "RustAudio/baseview",
+      "url": "https://github.com/RustAudio/baseview",
       "category": "Музыкальное производство",
-      "stars": 93,
+      "stars": 388,
       "updated_days": 0,
-      "what": "Платформа sample library с плагинами CLAP/VST3/AU и упором на простой мощный UI.",
-      "why": "Прямо под электронную музыку: сборка/использование сэмпловых инструментов в DAW.",
+      "what": "Низкоуровневый window-system интерфейс для UI аудиоплагинов (Rust).",
+      "why": "Для разработки собственных VST/аудио-плагинов — инфраструктурный слой UI. Не DAW и не готовый инструмент музыканта.",
       "cases": [
         {
-          "short": "Свой sample-based инструмент в Ableton/Bitwig/etc.",
+          "short": "Свой плагин с кастомным UI на Rust.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Изучить open-source путь CLAP/VST3.",
+          "short": "Изучить стек Rust audio plugin.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Основа для коммерческого sample-пака.",
+          "short": "Комбинировать с CLAP/VST обёртками.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: Apache-2.0."
     },
     {
       "n": 23,
-      "full_name": "Orastron/brickworks",
-      "url": "https://github.com/Orastron/brickworks",
+      "full_name": "zynthian/zynthian-ui",
+      "url": "https://github.com/zynthian/zynthian-ui",
       "category": "Музыкальное производство",
-      "stars": 112,
+      "stars": 215,
       "updated_days": 0,
-      "what": "Music DSP toolkit — базовые блоки для аудиодвижков на разных платформах.",
-      "why": "Для тех, кто хочет писать свои эффекты/синтез, а не только крутить готовые плагины; ближе к «разработчик + музыка».",
+      "what": "UI открытой платформы Zynthian (модульный Linux-синтезатор/семплер на Pi-подобном железе).",
+      "why": "Практичный путь в электронную музыку на железе: open synth-станция. Нужно железо Zynthian или совместимое.",
       "cases": [
         {
-          "short": "Прототип собственного эффекта/осциллятора.",
+          "short": "Собрать/прошить Zynthian-станцию.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Встраивание DSP в плагин или интерактивный веб-эксперимент.",
+          "short": "Кастомизация UI под свой live-set.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Обучение основам музыкального DSP.",
+          "short": "Изучить open synth workflow.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: GPL-3.0."
     },
     {
       "n": 24,
-      "full_name": "martinic/DrMixAISynth",
-      "url": "https://github.com/martinic/DrMixAISynth",
+      "full_name": "FluidSynth/fluidsynth",
+      "url": "https://github.com/FluidSynth/fluidsynth",
       "category": "Музыкальное производство",
-      "stars": 57,
+      "stars": 2492,
       "updated_days": 0,
-      "what": "Proof-of-concept синтезатор Doctor Mix AI Synth в форматах AAX/AU/CLAP/VST2/VST3.",
-      "why": "Игрушечный/учебный AI-synth для экспериментов; не стоит ждать production-ready коммерческий инструмент — это явно PoC.",
+      "what": "Software synthesizer по спецификации SoundFont 2 — рендер MIDI через SF2.",
+      "why": "Классика для электронной музыки и эмбеда синтеза в свои тулы/ботов/DAW-цепочки без тяжёлых проприетарных движков.",
       "cases": [
         {
-          "short": "Пощупать AI-assisted synth в DAW.",
+          "short": "Офлайн-рендер MIDI → WAV в пайплайне.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Посмотреть multi-format plugin packaging.",
+          "short": "Саундфонты для sketch-треков.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Идеи для своего лёгкого плагина.",
+          "short": "Встроить synth в свой инструмент.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "Scorecard score=5.1; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: LGPL-2.1."
     },
     {
       "n": 25,
-      "full_name": "steedos/steedos-platform",
-      "url": "https://github.com/steedos/steedos-platform",
+      "full_name": "kenz1117/dsh-ui-usage-billing",
+      "url": "https://github.com/kenz1117/dsh-ui-usage-billing",
       "category": "Коммерческие SaaS-заготовки",
-      "stars": 1579,
+      "stars": 56,
       "updated_days": 0,
-      "what": "AI-native платформа для корпоративных приложений (ObjectStack: ObjectQL/ObjectOS/Object UI): low-code/объектная модель, упор на быструю сборку внутренних apps.",
-      "why": "Потенциал быстро собрать внутренние приложения (заказы, справочники) и коммерческие заготовки; нужно отдельно проверить vendor lock-in и кривую обучения.",
+      "what": "Плагин usage billing dashboard для DeepSeek Harness: метрики стоимости в сайдбаре, агрегация usage из session logs, каталог цен провайдеров.",
+      "why": "Узкий, но полезный кусок billing UX для agent-стека; не полный SaaS boilerplate. Можно подсмотреть паттерны учёта токенов/стоимости.",
       "cases": [
         {
-          "short": "Внутренний портал заявок БОКСМАРТ.",
+          "short": "Контроль расходов на LLM в команде агентов.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Прототип B2B-кабинета клиента.",
+          "short": "Идеи UI для биллинга в своём SaaS.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Эксперимент «prompt → business app» для нишевого SaaS.",
+          "short": "Не использовать как единственную SaaS-основу.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT."
     },
     {
       "n": 26,
-      "full_name": "COPPSARY/Motify",
-      "url": "https://github.com/COPPSARY/Motify",
+      "full_name": "blockmatic/basilic",
+      "url": "https://github.com/blockmatic/basilic",
       "category": "Коммерческие SaaS-заготовки",
-      "stars": 88,
+      "stars": 89,
       "updated_days": 0,
-      "what": "AI-инструмент для генерации explainer/launch-видео для SaaS.",
-      "why": "Для коммерциализации нишевых продуктов (калькуляторы, боты) помогает с маркетинговыми роликами; это не backend-boilerplate, а go-to-market утилита.",
+      "what": "Full-stack API-first agentic TypeScript starter (AI SDK / generative UI по topics).",
+      "why": "Стартер под агентные приложения на TS — ближе к коммерциализации AI-фич, чем пустой CRUD boilerplate. Проверить auth/billing в README перед выбором.",
       "cases": [
         {
-          "short": "Короткий launch-ролик для нового SaaS.",
+          "short": "Каркас AI-ассистента для менеджеров упаковки.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Explainer для B2B-клиентов упаковки.",
+          "short": "API-first сервис с generative UI.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Черновики креативов перед заказным видео.",
+          "short": "Сравнить с классическим Next SaaS starter.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: MIT."
     },
     {
       "n": 27,
-      "full_name": "level09/readykit",
-      "url": "https://github.com/level09/readykit",
+      "full_name": "stickerdaniel/saas-starter",
+      "url": "https://github.com/stickerdaniel/saas-starter",
       "category": "Коммерческие SaaS-заготовки",
-      "stars": 247,
+      "stars": 55,
       "updated_days": 0,
-      "what": "Production-ready Flask SaaS-шаблон: multi-tenancy, billing, teams.",
-      "why": "Если пилот проще на Python/Flask, чем на Next.js — готовые teams/billing ускоряют вывод нишевого SaaS. Для основного TS-стека это альтернативный путь, не замена Next-boilerplate.",
+      "what": "SvelteKit + Convex SaaS starter: auth, billing, admin — оптимизирован под coding agents.",
+      "why": "Полный SaaS-каркас с биллингом; стек SvelteKit (не Next.js) — учитывать, если хотите остаться на Next/Vercel. Хорош как референс структуры auth/billing.",
       "cases": [
         {
-          "short": "Быстрый multi-tenant пилот с оплатой.",
+          "short": "Быстрый пилот платного мини-SaaS.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Каркас teams/roles для B2B.",
+          "short": "Подсмотреть модель billing/admin.",
           "plain": "",
           "example": ""
         },
         {
-          "short": "Сравнение модели биллинга с Next.js-стартерами.",
+          "short": "Портировать идеи на Next.js при необходимости.",
           "plain": "",
           "example": ""
         }
       ],
-      "security": ""
+      "security": "нет данных Scorecard; fake stars — нет данных (API stargazers недоступен); скам-маркеров не найдено. Лицензия: нет."
     }
   ]
 }
