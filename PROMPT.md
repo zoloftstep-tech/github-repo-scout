@@ -96,11 +96,13 @@
 5. Смержи без ожидания ревью:
 
 ```bash
+gh pr ready || true
 gh pr merge --squash --delete-branch
 # если политика репо требует admin:
 # gh pr merge --squash --admin --delete-branch
 ```
 
+**Никогда не оставляй draft PR.** Если создался draft — сразу `gh pr ready`, затем merge.
 6. Убедись, что `origin/main` содержит новый `latest.md` (`git fetch && git show origin/main:latest.md | head`).
 
 Запасной путь, если merge через PR недоступен (нет прав / branch protection):  
