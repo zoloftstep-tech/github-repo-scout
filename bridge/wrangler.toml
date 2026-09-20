@@ -1,0 +1,15 @@
+name = "telegram-cursor-bridge"
+main = "telegram-cursor-worker.js"
+compatibility_date = "2026-09-20"
+
+# Secrets (set after deploy):
+#   wrangler secret put TG_BOT_TOKEN
+#   wrangler secret put TG_CHAT_ID          # group id, usually -100...
+#   wrangler secret put CURSOR_SCOUT_WEBHOOK_URL
+#   wrangler secret put CURSOR_SCOUT_WEBHOOK_KEY
+# Optional (/digest via send automation):
+#   wrangler secret put CURSOR_SEND_WEBHOOK_URL
+#   wrangler secret put CURSOR_SEND_WEBHOOK_KEY
+#
+# Bot must be group admin with Pin messages.
+# Group command: /run  (= scout + digest after merge)
