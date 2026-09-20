@@ -1,12 +1,14 @@
 # github-repo-scout
 
-Еженедельный поиск проверенных GitHub-репозиториев под задачи Ростислава (security-gate + персональный дайджест + Telegram).
+Еженедельный поиск проверенных GitHub-репозиториев + дайджест в Telegram.
 
-- Инструкция агента: [`PROMPT.md`](./PROMPT.md)
-- Telegram (11:00 + ручной `/scout`): [`TELEGRAM.md`](./TELEGRAM.md)
-- Категории: [`interests.json`](./interests.json)
-- Уже показанные: [`seen_repos.json`](./seen_repos.json)
-- Дайджесты: `digests/YYYY-MM-DD.md`, актуальный — [`latest.md`](./latest.md)
+| Файл | Зачем |
+|------|--------|
+| [`SETUP.md`](./SETUP.md) | **чеклист: что нажать дальше** |
+| [`automations/SEND_PROMPT.md`](./automations/SEND_PROMPT.md) | prompt для рассылки вс 11:00 |
+| [`automations/SCOUT_PROMPT.md`](./automations/SCOUT_PROMPT.md) | prompt для поиска вс 06:00 |
+| [`PROMPT.md`](./PROMPT.md) | полная инструкция |
+| [`scripts/send_latest_to_telegram.sh`](./scripts/send_latest_to_telegram.sh) | отправка `latest.md` |
+| [`bridge/telegram-cursor-worker.js`](./bridge/telegram-cursor-worker.js) | `/scout` `/digest` из TG |
 
-**Расписание (Minsk):** scout вс 06:00 → автомерж в `main` к ~10:00 → отправка в TG вс 11:00.  
-Cron UTC: scout `0 3 * * 0`, send `0 8 * * 0`.
+**Сейчас на `main`:** дайджест `2026-09-20` в [`latest.md`](./latest.md).
