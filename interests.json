@@ -1,11 +1,38 @@
 {
-  "AI-агенты и LLM": "AI agent OR LLM framework OR langchain OR llamaindex OR autogen stars:>=50",
-  "Автоматизация бизнеса": "business automation OR workflow engine OR CRM OR ERP open-source -n8n",
-  "Упаковка и производство": "packaging calculator OR carton OR corrugated OR manufacturing MES OR inventory",
-  "Telegram-боты": "telegram bot OR grammy OR telegraf OR aiogram",
-  "Next.js и веб": "Next.js OR Vercel OR full-stack typescript web app",
-  "Кибербезопасность": "security tooling OR self-hosted security OR vulnerability OR secrets scanning",
-  "3D и печать": "3D printing OR CAD OR OpenSCAD OR slicer",
-  "Музыкальное производство": "music production OR synthesizer OR DAW OR audio plugin OR VST",
-  "Коммерческие SaaS-заготовки": "SaaS starter OR boilerplate billing OR multi-tenant"
+  "AI-агенты и LLM": {
+    "query": "langchain OR llamaindex OR autogen OR \"ai agent\" OR \"llm agent\" OR crewai",
+    "soft_query": "LLM framework OR agentic OR \"tool calling\" OR mcp server"
+  },
+  "Автоматизация бизнеса": {
+    "query": "CRM OR ERP OR \"workflow engine\" OR \"business process\" OR invoicing OR \"open source crm\"",
+    "soft_query": "inventory management OR \"order management\" OR \"self-hosted crm\""
+  },
+  "Упаковка и производство": {
+    "query": "packaging OR carton OR corrugated OR \"die cut\" OR MES OR \"manufacturing execution\"",
+    "soft_query": "\"packaging calculator\" OR \"box calculator\" OR corrugated OR packing list"
+  },
+  "Telegram-боты": {
+    "query": "aiogram OR grammy OR telegraf OR \"telegram bot\" bot (shop OR crm OR notify OR support OR business)",
+    "soft_query": "aiogram OR grammy OR \"telegram bot\" (notification OR admin OR customer)"
+  },
+  "Next.js и веб": {
+    "query": "Next.js (SaaS OR dashboard OR \"app router\") OR \"nextjs starter\"",
+    "soft_query": "Next.js typescript boilerplate OR \"full stack\" Next.js"
+  },
+  "Кибербезопасность": {
+    "query": "\"secrets scanning\" OR \"security tooling\" OR falco OR trivy OR \"self-hosted\" (SIEM OR WAF)",
+    "soft_query": "vulnerability scanner OR \"dependency check\" OR harden"
+  },
+  "3D и печать": {
+    "query": "\"3D printing\" OR OpenSCAD OR slicer OR \"CAD\" (parametric OR opensource)",
+    "soft_query": "OpenSCAD OR freecad OR \"3d printer\""
+  },
+  "Музыкальное производство": {
+    "query": "synthesizer OR VST OR \"audio plugin\" OR DAW OR \"music production\"",
+    "soft_query": "modular synth OR \"web audio\" OR eurorack"
+  },
+  "Коммерческие SaaS-заготовки": {
+    "query": "\"SaaS starter\" OR \"SaaS boilerplate\" OR (billing OR stripe) (multi-tenant OR starter)",
+    "soft_query": "\"nextjs saas\" OR \"saas template\" OR \"boilerplate billing\""
+  }
 }
