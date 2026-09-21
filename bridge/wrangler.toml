@@ -2,6 +2,10 @@ name = "telegram-cursor-bridge"
 main = "telegram-cursor-worker.js"
 compatibility_date = "2026-09-20"
 
+# Cron: after /run, poll main and auto-post digest when latest.md changes.
+[triggers]
+crons = ["*/2 * * * *"]
+
 # Secrets (set after deploy):
 #   wrangler secret put TG_BOT_TOKEN
 #   wrangler secret put TG_CHAT_ID          # group id, usually -100...
@@ -12,4 +16,5 @@ compatibility_date = "2026-09-20"
 #   wrangler secret put CURSOR_SEND_WEBHOOK_KEY
 #
 # Bot must be group admin with Pin messages.
-# Group command: /run  (= scout + digest after merge)
+# Group command: /run  (= scout; Worker cron delivers digest when main updates)
+# Redeploy after pull: npx wrangler deploy

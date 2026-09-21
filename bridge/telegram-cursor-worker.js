@@ -15,7 +15,7 @@ const SEP = "━━━━━━━━━━━━━━━━━━━━";
 const PIN_MARK = "📌 Подборка";
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     if (request.method !== "POST") return new Response("ok");
 
     let update;
@@ -51,14 +51,16 @@ export default {
       }
 
       if (text === "/run" || text === "/scout") {
+        const baseline = await digestFingerprint();
         await cursorWebhook(env.CURSOR_SCOUT_WEBHOOK_URL, env.CURSOR_SCOUT_WEBHOOK_KEY, {
           prompt:
-            "Режим scout: выполни automations/SCOUT_PROMPT.md и PROMPT.md. После merge в main сразу: bash scripts/send_latest_to_telegram.sh (полный дайджест с кнопками в TG_CHAT_ID).",
+            "Режим scout (ручной /run из Telegram). Выполни automations/SCOUT_PROMPT.md и PROMPT.md: поиск, дайджест, merge в main. Telegram-рассылку после /run делает Worker сам — НЕ вызывай send_latest_to_telegram.sh на этом запуске.",
         });
+        await setPendingRun(chatId, baseline);
         await reply(
           env,
           chatId,
-          "Запустил scout. Обычно 30–90 мин — потом дайджест сам придёт в эту группу. Или /digest, когда уже на main."
+          "Запустил scout. Обычно 30–90 мин. Бот сам пришлёт дайджест в группу, когда обновятся latest.md на main (резервный поллинг). Или /digest."
         );
         return json({ ok: true });
       }
@@ -85,7 +87,126 @@ export default {
       return json({ ok: false, error: String(e.message || e) });
     }
   },
+
+  /** Cron: check pending /run and auto-post digest when main updates. */
+  async scheduled(_event, env, ctx) {
+    ctx.waitUntil(pollPendingDigest(env));
+  },
 };
+
+const PENDING_TTL_MS = 2 * 60 * 60 * 1000; // 2h
+const PENDING_CACHE_REQ = new Request("https://scout-pending-run.local/state");
+
+async function digestFingerprint() {
+  const [mdRes, cardsRes, commitSha] = await Promise.all([
+    fetch(`${RAW_BASE}/latest.md`, { cf: { cacheTtl: 0, cacheEverything: false } }),
+    fetch(`${RAW_BASE}/digest_cards.json`, { cf: { cacheTtl: 0, cacheEverything: false } }),
+    latestMdCommitSha(),
+  ]);
+  const md = mdRes.ok ? await mdRes.text() : "";
+  const cards = cardsRes.ok ? await cardsRes.text() : "";
+  return {
+    commitSha: commitSha || "",
+    mdLen: md.length,
+    mdHead: md.slice(0, 240),
+    cardsLen: cards.length,
+    cardsHead: cards.slice(0, 120),
+  };
+}
+
+async function latestMdCommitSha() {
+  try {
+    const res = await fetch(
+      "https://api.github.com/repos/zoloftstep-tech/github-repo-scout/commits?path=latest.md&per_page=1",
+      {
+        headers: {
+          Accept: "application/vnd.github+json",
+          "User-Agent": "telegram-cursor-bridge",
+        },
+      }
+    );
+    if (!res.ok) return "";
+    const arr = await res.json();
+    return arr?.[0]?.sha || "";
+  } catch {
+    return "";
+  }
+}
+
+function fingerprintChanged(before, after) {
+  if (!before || !after) return false;
+  if (before.commitSha && after.commitSha && before.commitSha !== after.commitSha) return true;
+  if (before.mdLen !== after.mdLen || before.mdHead !== after.mdHead) return true;
+  if (before.cardsLen !== after.cardsLen || before.cardsHead !== after.cardsHead) return true;
+  return false;
+}
+
+async function setPendingRun(chatId, baseline) {
+  const payload = {
+    chatId: String(chatId),
+    startedAt: Date.now(),
+    baseline,
+    notified: false,
+  };
+  const cache = caches.default;
+  await cache.put(
+    PENDING_CACHE_REQ,
+    new Response(JSON.stringify(payload), {
+      headers: {
+        "content-type": "application/json",
+        "cache-control": "max-age=7200",
+      },
+    })
+  );
+}
+
+async function getPendingRun() {
+  const cache = caches.default;
+  const hit = await cache.match(PENDING_CACHE_REQ);
+  if (!hit) return null;
+  try {
+    return await hit.json();
+  } catch {
+    return null;
+  }
+}
+
+async function clearPendingRun() {
+  const cache = caches.default;
+  await cache.delete(PENDING_CACHE_REQ);
+}
+
+async function pollPendingDigest(env) {
+  const pending = await getPendingRun();
+  if (!pending?.baseline) return;
+
+  const chatId = String(pending.chatId || env.TG_CHAT_ID);
+  const age = Date.now() - Number(pending.startedAt || 0);
+  if (age > PENDING_TTL_MS) {
+    await clearPendingRun();
+    await reply(
+      env,
+      chatId,
+      "Scout: прошло >2 ч, latest.md на main не обновился (или агент не смержил). Проверь Cursor run или жми /digest."
+    );
+    return;
+  }
+
+  const now = await digestFingerprint();
+  if (!fingerprintChanged(pending.baseline, now)) return;
+
+  await clearPendingRun();
+  try {
+    await postDigestFromGithub(env, chatId);
+    await reply(env, chatId, "Scout готов — дайджест выше (авто-доставка после обновления main).");
+  } catch (e) {
+    await reply(
+      env,
+      chatId,
+      `Scout: main обновился, но авто-отправка упала: ${String(e.message || e).slice(0, 200)}. Жми /digest.`
+    );
+  }
+}
 
 function stripBotSuffix(cmd) {
   return cmd.split("@")[0];

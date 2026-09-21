@@ -2,11 +2,11 @@
 
 Статус:
 - [x] Prompt / interests / дайджест на `main`
-- [x] Секреты `TG_*` (нужны и send, и scout)
+- [x] Секреты `TG_*` (нужны send; scout для /run достаточно merge)
 - [x] Формат дайджеста + `digest_cards.json` + кнопки/закреп в bridge
-- [ ] Deploy Worker (`bridge/`) + `setWebhook` + бот-админ с Pin
+- [ ] **Redeploy Worker** с cron `*/2` (`cd bridge && npx wrangler deploy`)
 - [ ] Webhook URL/key scout → secrets Worker
-- [ ] В группе: `/digest` → кнопки; `/run` → scout
+- [ ] В группе: `/digest` → кнопки; `/run` → scout → авто-дайджест после merge
 
 Подробности: [`TELEGRAM.md`](./TELEGRAM.md).
 
@@ -15,16 +15,15 @@
 - Cron UTC: `0 8 * * 0`
 - Prompt: [`automations/SEND_PROMPT.md`](./automations/SEND_PROMPT.md)
 - Repo: `zoloftstep-tech/github-repo-scout` @ `main`
-- Tools: только shell/git; Slack/PR/MCP — выкл
 - Secrets: `TG_BOT_TOKEN`, `TG_CHAT_ID` (группа)
 
 ## B. Scout (вс 06:00 Minsk)
 
 - Cron UTC: `0 3 * * 0` + Webhook
 - Prompt: [`automations/SCOUT_PROMPT.md`](./automations/SCOUT_PROMPT.md)
-- После ручного `/run` — сам шлёт дайджест скриптом
+- После ручного `/run` рассылку делает **Worker cron** (не агент)
 
-## C. Группа одной командой
+## C. Группа
 
-`/run` = scout → после merge автоматическая рассылка с кнопками.  
+`/run` = scout → merge на main → Worker каждые 2 мин видит новый `latest.md` → дайджест в группу.  
 `/digest` = только текущий дайджест.
