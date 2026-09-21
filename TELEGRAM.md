@@ -18,7 +18,7 @@
 
 | Команда | Что делает |
 |---------|------------|
-| **`/run`** | Запускает scout (webhook). После merge агент сам шлёт дайджест с кнопками. Это и есть «scout + send одной командой». |
+| **`/run`** | Запускает scout (webhook). Worker **сам** присылает дайджест с кнопками, когда на `main` обновится `latest.md` (cron каждые 2 мин). |
 | `/scout` | То же, что `/run` |
 | `/digest` | Только рассылка текущего `latest.md` + кнопки (без нового поиска) |
 | `/help` | Список команд |
@@ -57,7 +57,7 @@
 ```bash
 cd bridge
 npx wrangler login
-npx wrangler deploy
+npx wrangler deploy   # включает cron */2 * * * * (авто-дайджест после /run)
 npx wrangler secret put TG_BOT_TOKEN
 npx wrangler secret put TG_CHAT_ID
 npx wrangler secret put CURSOR_SCOUT_WEBHOOK_URL
@@ -66,6 +66,8 @@ npx wrangler secret put CURSOR_SCOUT_WEBHOOK_KEY
 npx wrangler secret put CURSOR_SEND_WEBHOOK_URL
 npx wrangler secret put CURSOR_SEND_WEBHOOK_KEY
 ```
+
+После правок Worker **обязательно** `npx wrangler deploy` снова.
 
 Webhook бота:
 ```bash
@@ -78,4 +80,4 @@ BotFather: группы **включены**; Privacy Mode можно остав
 
 1. В группе: `/digest` → куски + кнопки.
 2. Жми `1`, потом `2` → одно закреплённое сообщение растёт.
-3. `/run` → в Cursor новый scout run; через 30–90 мин дайджест в группе.
+3. `/run` → Cursor scout run; после merge на main Worker (cron) сам шлёт дайджест в группу.
