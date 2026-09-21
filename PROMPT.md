@@ -8,7 +8,8 @@
 - Не выдумывай функции, которых нет в README. Если применимость слабая — скажи честно.
 - Не запускай чужой код локально. Проверки — через GitHub API, Scorecard API и чтение файлов.
 - **Обезличивание:** в дайджесте и карточках **не** писать личные имена (в т.ч. «Ростислав»). Пиши «для команды», «для производства», «под стек Cursor/Next.js», «для БОКСМАРТ».
-- Коммить только: `digests/YYYY-MM-DD.md`, `digest_cards.json`, `seen_repos.json`, `latest.md` (и при необходимости правки `interests.json` / `PROMPT.md` по явной просьбе). Вспомогательные скрипты, `verified_candidates.json`, кэши — **не коммить**.
+- Коммить только: `digests/YYYY-MM-DD.md`, `digests/YYYY-MM-DD.cards.json`, `digest_cards.json`, `seen_repos.json`, `latest.md` (и при необходимости правки `interests.json` / `PROMPT.md` по явной просьбе). Вспомогательные скрипты, `verified_candidates.json`, кэши — **не коммить**.
+- **Архив дайджестов:** каждый прогон обязан сохранить `digests/YYYY-MM-DD.md` и `digests/YYYY-MM-DD.cards.json` в git. Старые файлы в `digests/` **не удалять и не переименовывать**. Повтор в тот же день — можно перезаписать файлы этой даты; файлы других дат не трогать.
 - После готовности дайджеста — отправка в Telegram (см. §9). Секреты: `TG_BOT_TOKEN`, `TG_CHAT_ID`.
 - Полностью гарантировать отсутствие malware нельзя. Финальное решение «ставить ли себе» — за человеком.
 
@@ -72,8 +73,14 @@
    - **каждый отказ** запиши в список отклонённых: `full_name`, краткое description, слой, причина;
    - остановись на **3** прошедших (отклонённых продолжай копить по всем просмотренным кандидатам категории, до 12).
 3. Для прошедших: README → персонализированная карточка.
-4. Запиши `digests/YYYY-MM-DD.md` (дата по **Europe/Minsk**) с блоками Рекомендованные + Отклонённые; обнови `seen_repos.json` (только рекомендованные), `latest.md` и **`digest_cards.json`**.
-5. Commit на ветку `cursor/scout-YYYY-MM-DD-ae1b` (или аналог) → открой PR в `main` → **сразу смержи сам** (§0.3). Не оставляй PR на ручной мерж.
+4. Запиши (дата по **Europe/Minsk**):
+   - `digests/YYYY-MM-DD.md` — полный дайджест (Рекомендованные + Отклонённые);
+   - `digests/YYYY-MM-DD.cards.json` — копия карточек (архив в git);
+   - `latest.md` — та же копия, что `.md`;
+   - `digest_cards.json` — та же копия, что `.cards.json` (для кнопок TG / Worker);
+   - `seen_repos.json` — только рекомендованные.
+   Старые `digests/*` других дат не трогай.
+5. Commit на ветку `cursor/scout-YYYY-MM-DD-ae1b` (или аналог) → открой PR в `main` → **сразу смержи сам** (§0.3). Не оставляй PR на ручной мерж. В PR обязательно оба файла даты в `digests/`.
 6. **Telegram после ручного `/run`:** полный дайджест в чат шлёт **Telegram Worker** (поллинг `latest.md` на main) — агент **не** вызывает `send_latest_to_telegram.sh` на webhook-запуске, чтобы не дублировать. На schedule 06:00 полный дайджест тоже не шли (send в 11:00); можно одну строку только в лог run «scout готов, смержено».
 
 ### Режим send
@@ -107,7 +114,7 @@ gh pr merge --squash --delete-branch
 6. Убедись, что `origin/main` содержит новый `latest.md` (`git fetch && git show origin/main:latest.md | head`).
 
 Запасной путь, если merge через PR недоступен (нет прав / branch protection):  
-**прямой push в `main`** только для файлов дайджеста (`digests/*`, `digest_cards.json`, `seen_repos.json`, `latest.md`) — один аккуратный commit на `main`. Не используй прямой push для правок `PROMPT.md` / `interests.json`, пока PR-merge работает.
+**прямой push в `main`** только для файлов дайджеста (`digests/*`, `digest_cards.json`, `seen_repos.json`, `latest.md`) — один аккуратный commit на `main`. В commit всегда включай и `.md`, и `.cards.json` за дату прогона. Не используй прямой push для правок `PROMPT.md` / `interests.json`, пока PR-merge работает.
 
 Если ни merge, ни push в `main` не удались — напиши в TG ошибку и оставь ссылку на открытый PR (единственный случай, когда нужен человек).
 
@@ -227,10 +234,12 @@ Soft-retry (один раз на категорию), если 0 прошедш�
 ## 4. Формат дайджеста
 
 Файлы (дата по Europe/Minsk):
-- `digests/YYYY-MM-DD.md` + копия в `latest.md`
-- `digest_cards.json` — машиночитаемые карточки для кнопок в Telegram (обязательно)
+- `digests/YYYY-MM-DD.md` — архив дайджеста в git (**обязательно**)
+- `digests/YYYY-MM-DD.cards.json` — архив карточек в git (**обязательно**, тот же JSON что ниже)
+- `latest.md` — копия последнего `.md` (для send / Worker)
+- `digest_cards.json` — копия последних карточек (кнопки TG / Worker)
 
-Сквозная нумерация рекомендованных: **#1 … #N** по всем категориям (не сбрасывать на каждой категории). Эта же нумерация в `digest_cards.json` и на кнопках бота.
+Сквозная нумерация рекомендованных: **#1 … #N** по всем категориям (не сбрасывать на каждой категории). Эта же нумерация в cards и на кнопках бота.
 
 ### 4.1. Markdown (`latest.md`)
 
@@ -349,9 +358,10 @@ Scorecard …; fake stars …; скам-маркеров не найдено.
 | `TELEGRAM.md` | секреты, cron, команды бота в группе |
 | `interests.json` | категории и query |
 | `seen_repos.json` | `owner/repo` → `YYYY-MM-DD` |
-| `digests/YYYY-MM-DD.md` | дайджест |
+| `digests/YYYY-MM-DD.md` | архив дайджеста (все даты хранить) |
+| `digests/YYYY-MM-DD.cards.json` | архив карточек той же даты |
 | `latest.md` | копия последнего дайджеста |
-| `digest_cards.json` | карточки для кнопок TG |
+| `digest_cards.json` | актуальные карточки для кнопок TG |
 
 В git не попадают: `/tmp/scout_*.py`, `verified_candidates.json`, сырые дампы API.
 
@@ -403,7 +413,7 @@ bash scripts/send_latest_to_telegram.sh
 Нажатия кнопок обрабатывает Cloudflare Worker (`bridge/`): создаёт/дописывает **одно закреплённое** сообщение-подборку.
 
 - Не логируй токен.
-- Если секретов нет — всё равно закоммить дайджест + `digest_cards.json`.
+- Если секретов нет — всё равно закоммить `digests/YYYY-MM-DD.md`, `digests/YYYY-MM-DD.cards.json`, `latest.md`, `digest_cards.json`.
 - Ручной запуск из группы: `/run` (scout; после merge сам шлёт дайджест) или `/digest` (только рассылка).
 
 ---
@@ -411,4 +421,4 @@ bash scripts/send_latest_to_telegram.sh
 ## 10. Ограничения продукта Cursor
 
 - Нет официального Telegram trigger / Send-to-Telegram tool → Bot API + Worker webhook.
-- Расписание 11:00 = send-автоматизация; ручной `/run` из группы = scout webhook → после merge скрипт отправки.
+- Расписание 11:00 = send-автоматизация; ручной `/run` из группы = scout webhook → после merge дайджест шлёт **Worker cron** (агент `send_latest_to_telegram.sh` не вызывает).
