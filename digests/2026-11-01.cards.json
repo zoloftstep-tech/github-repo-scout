@@ -1,0 +1,761 @@
+{
+  "date": "2026-11-01",
+  "repos": [
+    {
+      "n": 1,
+      "full_name": "chrisryugj/kordoc",
+      "url": "https://github.com/chrisryugj/kordoc",
+      "category": "AI-агенты и LLM",
+      "stars": 2881,
+      "updated_days": 0,
+      "what": "Kordoc — CLI/MCP-сервер: HWP/HWPX/PDF/Office → Markdown, плюс заполнение форм и сравнение версий документов для LLM/RAG.",
+      "why": "Сильный MCP-инструмент под Cursor, если нужно кормить агента документами. К цеху слабо, к офисным PDF/договорам — сильно.",
+      "cases": [
+        {
+          "short": "Агентный пайплайн",
+          "plain": "Описать шаги текстом — агент дергает инструменты.",
+          "example": "Свести прайс и остатки без ручного копипаста."
+        },
+        {
+          "short": "MCP/SDK в Cursor",
+          "plain": "Подключить готовые тулзы к IDE-агенту.",
+          "example": "Агент открывает PR с фиксом калькулятора."
+        },
+        {
+          "short": "Не ERP",
+          "plain": "Слой рассуждения, не учёт цеха.",
+          "example": "Держать рядом с CRM/MES, не вместо них."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: MIT."
+    },
+    {
+      "n": 2,
+      "full_name": "sbroenne/mcp-server-excel",
+      "url": "https://github.com/sbroenne/mcp-server-excel",
+      "category": "AI-агенты и LLM",
+      "stars": 837,
+      "updated_days": 0,
+      "what": "MCP-сервер/CLI для автоматизации настоящего Microsoft Excel: Power Query, DAX, VBA, сводные и графики через AI.",
+      "why": "Под стек агентов: прайсы и калькуляции часто живут в Excel. Windows/Excel-зависимость — учитывайте.",
+      "cases": [
+        {
+          "short": "Агентный пайплайн",
+          "plain": "Описать шаги текстом — агент дергает инструменты.",
+          "example": "Свести прайс и остатки без ручного копипаста."
+        },
+        {
+          "short": "MCP/SDK в Cursor",
+          "plain": "Подключить готовые тулзы к IDE-агенту.",
+          "example": "Агент открывает PR с фиксом калькулятора."
+        },
+        {
+          "short": "Не ERP",
+          "plain": "Слой рассуждения, не учёт цеха.",
+          "example": "Держать рядом с CRM/MES, не вместо них."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: MIT."
+    },
+    {
+      "n": 3,
+      "full_name": "RandyChen1985/nanzi-ai-agent-platform",
+      "url": "https://github.com/RandyChen1985/nanzi-ai-agent-platform",
+      "category": "AI-агенты и LLM",
+      "stars": 222,
+      "updated_days": 0,
+      "what": "🚀 开源企业级多智能体平台与 ChatBI 数据洞察平台。支持多 Agent 协作、RAG 知识增强、物理数据源直连与安全沙箱执行、Redis 长期记忆引擎，并集成多模态 EmbedChat 挂件与全方位 Token 消耗审计看板，完整 RBAC权限控制和 Harness支持。. 项目声明 本项目为 个人开源 ，供自由学习交流，遵循 MIT 开源协议，可自由分发。 原项目名称「云枢」与其他企业项目重名，为避免混淆，现更名为「NanZi」。 「NanZi」来自我一直使用的网名（南孜），取「孜孜不倦」之意，寓意 AI 持续学习与进化。 NanZi · 智能体平台 (NanZi AI Agent Platform) 简体中文 | English 企业级 AI 智能体编排与执行平台 Connect Data.",
+      "why": "Под стек Cursor/агентов. К цеховому MES может быть слабо — оценивайте eng vs производство.",
+      "cases": [
+        {
+          "short": "Агентный пайплайн",
+          "plain": "Описать шаги текстом — агент дергает инструменты.",
+          "example": "Свести прайс и остатки без ручного копипаста."
+        },
+        {
+          "short": "MCP/SDK в Cursor",
+          "plain": "Подключить готовые тулзы к IDE-агенту.",
+          "example": "Агент открывает PR с фиксом калькулятора."
+        },
+        {
+          "short": "Не ERP",
+          "plain": "Слой рассуждения, не учёт цеха.",
+          "example": "Держать рядом с CRM/MES, не вместо них."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: MIT."
+    },
+    {
+      "n": 4,
+      "full_name": "OCA/reporting-engine",
+      "url": "https://github.com/OCA/reporting-engine",
+      "category": "Автоматизация бизнеса",
+      "stars": 445,
+      "updated_days": 0,
+      "what": "Odoo Alternative Reporting Engine. reporting-engine reporting-engine [//]: (addons) Available addons ---------------- addon | version | maintainers | summary --- | --- | --- | --- base comment template | 19.0.0.0.2 | | Add conditional mako template to any reporton models that inherits comment.template.",
+      "why": "Под CRM/учёт/workflow для продаж и производства упаковки.",
+      "cases": [
+        {
+          "short": "CRM/ERP контур",
+          "plain": "Клиенты, счета и статусы заказов в одном месте.",
+          "example": "Заказ тиража коробок — от заявки до отгрузки."
+        },
+        {
+          "short": "Workflow",
+          "plain": "Эскалации живут в системе, не в чатах.",
+          "example": "Просроченный счёт → задача менеджеру."
+        },
+        {
+          "short": "Self-hosted",
+          "plain": "Данные клиентов у команды.",
+          "example": "База дилеров на своём сервере."
+        }
+      ],
+      "security": "Scorecard score=4.8; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: AGPL-3.0."
+    },
+    {
+      "n": 5,
+      "full_name": "OCA/e-commerce",
+      "url": "https://github.com/OCA/e-commerce",
+      "category": "Автоматизация бизнеса",
+      "stars": 208,
+      "updated_days": 0,
+      "what": "Odoo E-Commerce server automation addons. e-commerce e-commerce [//]: (addons) Available addons ---------------- addon | version | maintainers | summary --- | --- | --- | --- product template multi link | 19.0.1.0.0 | | Product Multi Links (Template) product template multi link date span | 19.0.1.0.0 | | Add an optional ",
+      "why": "Под CRM/учёт/workflow для продаж и производства упаковки.",
+      "cases": [
+        {
+          "short": "CRM/ERP контур",
+          "plain": "Клиенты, счета и статусы заказов в одном месте.",
+          "example": "Заказ тиража коробок — от заявки до отгрузки."
+        },
+        {
+          "short": "Workflow",
+          "plain": "Эскалации живут в системе, не в чатах.",
+          "example": "Просроченный счёт → задача менеджеру."
+        },
+        {
+          "short": "Self-hosted",
+          "plain": "Данные клиентов у команды.",
+          "example": "База дилеров на своём сервере."
+        }
+      ],
+      "security": "Scorecard score=4.8; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: AGPL-3.0."
+    },
+    {
+      "n": 6,
+      "full_name": "OCA/account-analytic",
+      "url": "https://github.com/OCA/account-analytic",
+      "category": "Автоматизация бизнеса",
+      "stars": 130,
+      "updated_days": 0,
+      "what": "Odoo Account Analytic Related Addons. account-analytic account-analytic [//]: (addons) Available addons ---------------- addon | version | maintainers | summary --- | --- | --- | --- account analytic distribution model recalculate | 19.0.1.0.0 | | Add the possibility to change the analytic distribution of the journal",
+      "why": "Под CRM/учёт/workflow для продаж и производства упаковки.",
+      "cases": [
+        {
+          "short": "CRM/ERP контур",
+          "plain": "Клиенты, счета и статусы заказов в одном месте.",
+          "example": "Заказ тиража коробок — от заявки до отгрузки."
+        },
+        {
+          "short": "Workflow",
+          "plain": "Эскалации живут в системе, не в чатах.",
+          "example": "Просроченный счёт → задача менеджеру."
+        },
+        {
+          "short": "Self-hosted",
+          "plain": "Данные клиентов у команды.",
+          "example": "База дилеров на своём сервере."
+        }
+      ],
+      "security": "Scorecard score=4.7; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: AGPL-3.0."
+    },
+    {
+      "n": 7,
+      "full_name": "shaise/FreeCAD_SheetMetal",
+      "url": "https://github.com/shaise/FreeCAD_SheetMetal",
+      "category": "Упаковка и производство",
+      "stars": 350,
+      "updated_days": 15,
+      "what": "FreeCAD SheetMetal — workbench для листового металла: развёртки, сгибы и простые операции на базе FreeCAD.",
+      "why": "К гофрокартону применимость косвенная (общий CAD/развёртки). Полезно для оснастки/макетов, не как калькулятор коробок.",
+      "cases": [
+        {
+          "short": "Цех/MES",
+          "plain": "Видно загрузку линии и узкие места.",
+          "example": "Смена по гофрокоробам: план vs факт."
+        },
+        {
+          "short": "Калькуляция",
+          "plain": "Материал и операции по заказу.",
+          "example": "Короб 400×300 — норма расхода сразу."
+        },
+        {
+          "short": "Честная применимость",
+          "plain": "Общий MES может быть лишь косвенно про картон.",
+          "example": "Пилот на одном участке."
+        }
+      ],
+      "security": "Scorecard score=5.3; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: LGPL-2.1."
+    },
+    {
+      "n": 8,
+      "full_name": "ryankembrey/FreeCAD-DFM-Workbench",
+      "url": "https://github.com/ryankembrey/FreeCAD-DFM-Workbench",
+      "category": "Упаковка и производство",
+      "stars": 76,
+      "updated_days": 0,
+      "what": "Design for Manufacturing workbench для FreeCAD: подсказки по технологичности деталей в CAD.",
+      "why": "Ближе к производственному мышлению, чем к упаковке напрямую. Имеет смысл как CAD-слой рядом с цехом, не как MES.",
+      "cases": [
+        {
+          "short": "Цех/MES",
+          "plain": "Видно загрузку линии и узкие места.",
+          "example": "Смена по гофрокоробам: план vs факт."
+        },
+        {
+          "short": "Калькуляция",
+          "plain": "Материал и операции по заказу.",
+          "example": "Короб 400×300 — норма расхода сразу."
+        },
+        {
+          "short": "Честная применимость",
+          "plain": "Общий MES может быть лишь косвенно про картон.",
+          "example": "Пилот на одном участке."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: LGPL-2.1."
+    },
+    {
+      "n": 9,
+      "full_name": "point85/mes-ai",
+      "url": "https://github.com/point85/mes-ai",
+      "category": "Упаковка и производство",
+      "stars": 8,
+      "updated_days": 24,
+      "what": "Небольшой open-source MES с AI-уклоном для производственного контура (статусы, исполнение).",
+      "why": "Ниша MES редкая — кандидат для пилота на участке. К картону не привязан из коробки; нужна кастомизация под БОКСМАРТ.",
+      "cases": [
+        {
+          "short": "Цех/MES",
+          "plain": "Видно загрузку линии и узкие места.",
+          "example": "Смена по гофрокоробам: план vs факт."
+        },
+        {
+          "short": "Калькуляция",
+          "plain": "Материал и операции по заказу.",
+          "example": "Короб 400×300 — норма расхода сразу."
+        },
+        {
+          "short": "Честная применимость",
+          "plain": "Общий MES может быть лишь косвенно про картон.",
+          "example": "Пилот на одном участке."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: нет."
+    },
+    {
+      "n": 10,
+      "full_name": "Tishka17/aiogram_dialog",
+      "url": "https://github.com/Tishka17/aiogram_dialog",
+      "category": "Telegram-боты",
+      "stars": 899,
+      "updated_days": 3,
+      "what": "GUI framework on top of aiogram. Aiogram Dialog Version status: v2.x - actual release, supports aiogram v3.x v1.x - old release, supports aiogram v2.x, critical fix only About aiogram-dialog is a framework for developing interactive messages and menus in your telegram bot like a normal GUI application.",
+      "why": "Под бизнес-уведомления и поддержку (не crypto/VPN).",
+      "cases": [
+        {
+          "short": "Уведомления",
+          "plain": "Статусы и алерты в Telegram.",
+          "example": "«Тираж готов» в чат склада."
+        },
+        {
+          "short": "Поддержка",
+          "plain": "Клиент пишет боту вместо звонка.",
+          "example": "Статус заказа по номеру."
+        },
+        {
+          "short": "Админ-команды",
+          "plain": "Отчёты из мессенджера.",
+          "example": "/sales за сегодня."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: Apache-2.0."
+    },
+    {
+      "n": 11,
+      "full_name": "smixs/pi-durable-telegram",
+      "url": "https://github.com/smixs/pi-durable-telegram",
+      "category": "Telegram-боты",
+      "stars": 43,
+      "updated_days": 8,
+      "what": "Always-on durable pi agent on your server that you talk to in Telegram. Survives crashes and restarts, keeps history in SQLite. pi-durable Telegram gateway. EN · RU pi-durable telegram Your own AI agent that lives on your server and answers you in Telegram.",
+      "why": "Под бизнес-уведомления и поддержку (не crypto/VPN).",
+      "cases": [
+        {
+          "short": "Уведомления",
+          "plain": "Статусы и алерты в Telegram.",
+          "example": "«Тираж готов» в чат склада."
+        },
+        {
+          "short": "Поддержка",
+          "plain": "Клиент пишет боту вместо звонка.",
+          "example": "Статус заказа по номеру."
+        },
+        {
+          "short": "Админ-команды",
+          "plain": "Отчёты из мессенджера.",
+          "example": "/sales за сегодня."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: MIT."
+    },
+    {
+      "n": 12,
+      "full_name": "backmeupplz/jev_antispam_bot",
+      "url": "https://github.com/backmeupplz/jev_antispam_bot",
+      "category": "Telegram-боты",
+      "stars": 21,
+      "updated_days": 2,
+      "what": "Minimal grammY Telegram anti-spam bot powered by TypeSafe Jev. Jev Anti-Spam Bot Website: jev.borodutch.com (how the anti-spam bot works, what it deletes, FAQ).",
+      "why": "Под бизнес-уведомления и поддержку (не crypto/VPN).",
+      "cases": [
+        {
+          "short": "Уведомления",
+          "plain": "Статусы и алерты в Telegram.",
+          "example": "«Тираж готов» в чат склада."
+        },
+        {
+          "short": "Поддержка",
+          "plain": "Клиент пишет боту вместо звонка.",
+          "example": "Статус заказа по номеру."
+        },
+        {
+          "short": "Админ-команды",
+          "plain": "Отчёты из мессенджера.",
+          "example": "/sales за сегодня."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: MIT."
+    },
+    {
+      "n": 13,
+      "full_name": "jpedroschmitz/typescript-nextjs-starter",
+      "url": "https://github.com/jpedroschmitz/typescript-nextjs-starter",
+      "category": "Next.js и веб",
+      "stars": 1425,
+      "updated_days": 0,
+      "what": "Non-opinionated TypeScript starter for Next.js 16. All the tools you need to build your next project ⚡️. Non-opinionated TypeScript starter for Next.js Highly scalable foundation with the best DX.",
+      "why": "Под кабинеты и калькуляторы на Next.js/Vercel.",
+      "cases": [
+        {
+          "short": "Кабинет",
+          "plain": "Веб-интерфейс на Next.js.",
+          "example": "Кабинет дилера с прайсом."
+        },
+        {
+          "short": "SaaS-старт",
+          "plain": "Auth/роутинг без нуля.",
+          "example": "Калькулятор упаковки как продукт."
+        },
+        {
+          "short": "Превью на Vercel",
+          "plain": "Быстро показать UI команде.",
+          "example": "Новый экран прайса для менеджеров."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: MIT."
+    },
+    {
+      "n": 14,
+      "full_name": "trpc/examples-next-prisma-starter",
+      "url": "https://github.com/trpc/examples-next-prisma-starter",
+      "category": "Next.js и веб",
+      "stars": 788,
+      "updated_days": 0,
+      "what": "🚀 tRPC starter repo with E2E-testing. Prisma + tRPC Features - 🧙‍♂️ E2E typesafety with tRPC - ⚡ Full-stack React with Next.js - ⚡ Database with Prisma - ⚙️ VSCode extensions - 🎨 ESLint + Prettier - 💚 CI setup using GitHub Actions: - ✅ E2E testing with Playwright - ✅ Linting - 🔐 Validates your env vars on build and s",
+      "why": "Под кабинеты и калькуляторы на Next.js/Vercel.",
+      "cases": [
+        {
+          "short": "Кабинет",
+          "plain": "Веб-интерфейс на Next.js.",
+          "example": "Кабинет дилера с прайсом."
+        },
+        {
+          "short": "SaaS-старт",
+          "plain": "Auth/роутинг без нуля.",
+          "example": "Калькулятор упаковки как продукт."
+        },
+        {
+          "short": "Превью на Vercel",
+          "plain": "Быстро показать UI команде.",
+          "example": "Новый экран прайса для менеджеров."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: нет."
+    },
+    {
+      "n": 15,
+      "full_name": "s0vers/next-app-i18n-starter",
+      "url": "https://github.com/s0vers/next-app-i18n-starter",
+      "category": "Next.js и веб",
+      "stars": 66,
+      "updated_days": 0,
+      "what": "A humble Next.js 16 starter: Server Components, i18n with middleware, shadcn UI, light/dark themes with CSS variables, language switch, OmitRTL utility, and App Router. Jumpstart your modern web app with zero client-side JavaScript overhead. Next.js 16 i18n Starter A multilingual Next.js starter built with Next.js 16 , React 19 , next-intl 4 , and shadcn/ui .",
+      "why": "Под кабинеты и калькуляторы на Next.js/Vercel.",
+      "cases": [
+        {
+          "short": "Кабинет",
+          "plain": "Веб-интерфейс на Next.js.",
+          "example": "Кабинет дилера с прайсом."
+        },
+        {
+          "short": "SaaS-старт",
+          "plain": "Auth/роутинг без нуля.",
+          "example": "Калькулятор упаковки как продукт."
+        },
+        {
+          "short": "Превью на Vercel",
+          "plain": "Быстро показать UI команде.",
+          "example": "Новый экран прайса для менеджеров."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: MIT."
+    },
+    {
+      "n": 16,
+      "full_name": "aquasecurity/trivy-operator",
+      "url": "https://github.com/aquasecurity/trivy-operator",
+      "category": "Кибербезопасность",
+      "stars": 1992,
+      "updated_days": 1,
+      "what": "Kubernetes-native security toolkit. (Documentation) [![GitHub Release][release-img]][release] [![Build Action][action-build-img]][action-build] [![Release snapshot Action][action-release-snapshot-img]][action-release-snapshot] [![Go Report Card][report-card-img]][report-card] [![GitHub All Releases][github-all-rele",
+      "why": "Под защиту инфраструктуры, CI и секретов.",
+      "cases": [
+        {
+          "short": "Скан зависимостей",
+          "plain": "CVE в образах до продакшена.",
+          "example": "CI падает на критичной CVE."
+        },
+        {
+          "short": "Секреты",
+          "plain": "Не светить токены в репо.",
+          "example": "Проверка PR на TG_BOT_TOKEN."
+        },
+        {
+          "short": "Self-hosted security",
+          "plain": "Инструменты рядом с инфраструктурой.",
+          "example": "Алерты по аномалиям CRM."
+        }
+      ],
+      "security": "Scorecard score=7.3; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: Apache-2.0."
+    },
+    {
+      "n": 17,
+      "full_name": "CrowdStrike/Falcon-Toolkit",
+      "url": "https://github.com/CrowdStrike/Falcon-Toolkit",
+      "category": "Кибербезопасность",
+      "stars": 151,
+      "updated_days": 1,
+      "what": "Unleash the power of the Falcon Platform at the CLI. Falcon Toolkit automate all the things...remotely!",
+      "why": "Под защиту инфраструктуры, CI и секретов.",
+      "cases": [
+        {
+          "short": "Скан зависимостей",
+          "plain": "CVE в образах до продакшена.",
+          "example": "CI падает на критичной CVE."
+        },
+        {
+          "short": "Секреты",
+          "plain": "Не светить токены в репо.",
+          "example": "Проверка PR на TG_BOT_TOKEN."
+        },
+        {
+          "short": "Self-hosted security",
+          "plain": "Инструменты рядом с инфраструктурой.",
+          "example": "Алерты по аномалиям CRM."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: MIT."
+    },
+    {
+      "n": 18,
+      "full_name": "apache/magpie",
+      "url": "https://github.com/apache/magpie",
+      "category": "Кибербезопасность",
+      "stars": 133,
+      "updated_days": 0,
+      "what": "Apache Magpie — agent-assisted maintainership: triage, mentoring и работа с vulnerability disclosure для Apache-проектов.",
+      "why": "Больше eng/security-process, чем WAF. Полезно как образец агентного разбора CVE, не как SIEM.",
+      "cases": [
+        {
+          "short": "Скан зависимостей",
+          "plain": "CVE в образах до продакшена.",
+          "example": "CI падает на критичной CVE."
+        },
+        {
+          "short": "Секреты",
+          "plain": "Не светить токены в репо.",
+          "example": "Проверка PR на TG_BOT_TOKEN."
+        },
+        {
+          "short": "Self-hosted security",
+          "plain": "Инструменты рядом с инфраструктурой.",
+          "example": "Алерты по аномалиям CRM."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: Apache-2.0."
+    },
+    {
+      "n": 19,
+      "full_name": "mfranzon/print3d",
+      "url": "https://github.com/mfranzon/print3d",
+      "category": "3D и печать",
+      "stars": 520,
+      "updated_days": 0,
+      "what": "Print 3D skill from text to 3D printing using Bambu Lab slicer. print3d A Hermes Agent plugin that turns an idea, a photo of an object, or the shop listing of something you would otherwise buy into a Bambu Studio project for a Bambu Lab X2D or P2S (0.4 mm nozzle) .",
+      "why": "Под прототипы/оснастку и параметрику.",
+      "cases": [
+        {
+          "short": "Параметрика",
+          "plain": "Размер задаётся параметрами.",
+          "example": "Макет под типоразмер коробки."
+        },
+        {
+          "short": "Прототип",
+          "plain": "Физический образец до тиража.",
+          "example": "Посадка вкладыша до высечки."
+        },
+        {
+          "short": "Не медсофт",
+          "plain": "CAD/печать, не клиника.",
+          "example": "OpenSCAD / ферма принтеров."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: MIT."
+    },
+    {
+      "n": 20,
+      "full_name": "zoltanf/extrudo",
+      "url": "https://github.com/zoltanf/extrudo",
+      "category": "3D и печать",
+      "stars": 133,
+      "updated_days": 0,
+      "what": "Parametric CAD for 3D printing, in your browser. Offline version for your Mac, Windows or Linux computer is also available. Extrudo Parametric CAD for 3D printing, in your browser.",
+      "why": "Под прототипы/оснастку и параметрику.",
+      "cases": [
+        {
+          "short": "Параметрика",
+          "plain": "Размер задаётся параметрами.",
+          "example": "Макет под типоразмер коробки."
+        },
+        {
+          "short": "Прототип",
+          "plain": "Физический образец до тиража.",
+          "example": "Посадка вкладыша до высечки."
+        },
+        {
+          "short": "Не медсофт",
+          "plain": "CAD/печать, не клиника.",
+          "example": "OpenSCAD / ферма принтеров."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: GPL-3.0."
+    },
+    {
+      "n": 21,
+      "full_name": "wolfmanjm/kivy-smoothie-host",
+      "url": "https://github.com/wolfmanjm/kivy-smoothie-host",
+      "category": "3D и печать",
+      "stars": 60,
+      "updated_days": 0,
+      "what": "AKA Smoopi. A Smoothie host, running on rpi with touch screen, or on a Desktop. Supporting CNC operations and 3D printing. Smoopi a Graphical Smoothie Host for 3D printing and CNC Github supports ToC, it is available in the top-right corner of this document.",
+      "why": "Под прототипы/оснастку и параметрику.",
+      "cases": [
+        {
+          "short": "Параметрика",
+          "plain": "Размер задаётся параметрами.",
+          "example": "Макет под типоразмер коробки."
+        },
+        {
+          "short": "Прототип",
+          "plain": "Физический образец до тиража.",
+          "example": "Посадка вкладыша до высечки."
+        },
+        {
+          "short": "Не медсофт",
+          "plain": "CAD/печать, не клиника.",
+          "example": "OpenSCAD / ферма принтеров."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: GPL-3.0."
+    },
+    {
+      "n": 22,
+      "full_name": "DBraun/DawDreamer",
+      "url": "https://github.com/DBraun/DawDreamer",
+      "category": "Музыкальное производство",
+      "stars": 1339,
+      "updated_days": 0,
+      "what": "Digital Audio Workstation with Python; VST instruments/effects, parameter automation, FAUST, JAX, Warp Markers, and JUCE processors. DawDreamer Read the introduction to DawDreamer, which was presented as a Late-Breaking Demo at the 2021 ISMIR Conference.",
+      "why": "Боковой интерес (электронная музыка), к упаковке почти не привязан.",
+      "cases": [
+        {
+          "short": "Синтез/плагин",
+          "plain": "Инструмент для электронного продакшена.",
+          "example": "Пресет под трек без пиратского VST."
+        },
+        {
+          "short": "opensource DAW/утилита",
+          "plain": "Открытый софт вместо подписки.",
+          "example": "Черновик аранжировки."
+        },
+        {
+          "short": "Боковой интерес",
+          "plain": "К упаковке почти не относится.",
+          "example": "Вечерний продакшен."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: GPL-3.0."
+    },
+    {
+      "n": 23,
+      "full_name": "Ka1-S/LYNX-SHARE",
+      "url": "https://github.com/Ka1-S/LYNX-SHARE",
+      "category": "Музыкальное производство",
+      "stars": 262,
+      "updated_days": 0,
+      "what": "LYNX SHARE — lightweight open-source DAW in C++20/JUCE with the FL Studio workflow: Channel Rack, Piano Roll, Playlist, Mixer and .flp import. LYNX SHARE A lightweight DAW with the FL Studio workflow.",
+      "why": "Боковой интерес (электронная музыка), к упаковке почти не привязан.",
+      "cases": [
+        {
+          "short": "Синтез/плагин",
+          "plain": "Инструмент для электронного продакшена.",
+          "example": "Пресет под трек без пиратского VST."
+        },
+        {
+          "short": "opensource DAW/утилита",
+          "plain": "Открытый софт вместо подписки.",
+          "example": "Черновик аранжировки."
+        },
+        {
+          "short": "Боковой интерес",
+          "plain": "К упаковке почти не относится.",
+          "example": "Вечерний продакшен."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: AGPL-3.0."
+    },
+    {
+      "n": 24,
+      "full_name": "reales/retromulator",
+      "url": "https://github.com/reales/retromulator",
+      "category": "Музыкальное производство",
+      "stars": 71,
+      "updated_days": 0,
+      "what": "Retromulator A standalone app and DAW plugin (AAX / VST3 / AU) that emulates classic hardware synthesizers, samplers, and keyboards by running their original firmware on cycle-accurate CPU and DSP emulators.",
+      "why": "Боковой интерес (электронная музыка), к упаковке почти не привязан.",
+      "cases": [
+        {
+          "short": "Синтез/плагин",
+          "plain": "Инструмент для электронного продакшена.",
+          "example": "Пресет под трек без пиратского VST."
+        },
+        {
+          "short": "opensource DAW/утилита",
+          "plain": "Открытый софт вместо подписки.",
+          "example": "Черновик аранжировки."
+        },
+        {
+          "short": "Боковой интерес",
+          "plain": "К упаковке почти не относится.",
+          "example": "Вечерний продакшен."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: GPL-3.0."
+    },
+    {
+      "n": 25,
+      "full_name": "eriktaveras/django-saas-boilerplate",
+      "url": "https://github.com/eriktaveras/django-saas-boilerplate",
+      "category": "Коммерческие SaaS-заготовки",
+      "stars": 251,
+      "updated_days": 0,
+      "what": "A modern, production-ready Django boilerplate for building SaaS applications with HTMX, Tailwind CSS, and Alpine.js. This template provides everything you need to kickstart your next SaaS project with best practices and modern tooling. Django SaaS Boilerplate The open-source Django starter kit for building SaaS applications.",
+      "why": "Каркас для коммерциализации калькулятора/кабинета.",
+      "cases": [
+        {
+          "short": "Биллинг",
+          "plain": "Auth и тарифы уже в каркасе.",
+          "example": "Подписка на калькулятор для дилеров."
+        },
+        {
+          "short": "Multi-tenant",
+          "plain": "Несколько клиентов в одном приложении.",
+          "example": "Кабинет на дилера без отдельных деплоев."
+        },
+        {
+          "short": "MVP",
+          "plain": "Не писать CRUD/оплату с нуля.",
+          "example": "Пилот SaaS «расчёт упаковки»."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: MIT."
+    },
+    {
+      "n": 26,
+      "full_name": "fpindej/netrock",
+      "url": "https://github.com/fpindej/netrock",
+      "category": "Коммерческие SaaS-заготовки",
+      "stars": 235,
+      "updated_days": 5,
+      "what": "SaaS starter kit for small productions - .NET 10 Clean Architecture API + SvelteKit frontend, fully dockerized. Fork it, init it, build your product. NETrock Full-stack .NET 10 + SvelteKit foundation for building real products.",
+      "why": "Каркас для коммерциализации калькулятора/кабинета.",
+      "cases": [
+        {
+          "short": "Биллинг",
+          "plain": "Auth и тарифы уже в каркасе.",
+          "example": "Подписка на калькулятор для дилеров."
+        },
+        {
+          "short": "Multi-tenant",
+          "plain": "Несколько клиентов в одном приложении.",
+          "example": "Кабинет на дилера без отдельных деплоев."
+        },
+        {
+          "short": "MVP",
+          "plain": "Не писать CRUD/оплату с нуля.",
+          "example": "Пилот SaaS «расчёт упаковки»."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: MIT."
+    },
+    {
+      "n": 27,
+      "full_name": "liberusoftware/boilerplate-laravel",
+      "url": "https://github.com/liberusoftware/boilerplate-laravel",
+      "category": "Коммерческие SaaS-заготовки",
+      "stars": 205,
+      "updated_days": 1,
+      "what": "Laravel 13, PHP 8.5, Filament 5 and Livewire 4 SaaS boilerplate application with Jetstream and Sociallite. Liberu Boilerplate Production-ready Laravel foundation for modular, single-tenant and multi-tenant applications.",
+      "why": "Каркас для коммерциализации калькулятора/кабинета.",
+      "cases": [
+        {
+          "short": "Биллинг",
+          "plain": "Auth и тарифы уже в каркасе.",
+          "example": "Подписка на калькулятор для дилеров."
+        },
+        {
+          "short": "Multi-tenant",
+          "plain": "Несколько клиентов в одном приложении.",
+          "example": "Кабинет на дилера без отдельных деплоев."
+        },
+        {
+          "short": "MVP",
+          "plain": "Не писать CRUD/оплату с нуля.",
+          "example": "Пилот SaaS «расчёт упаковки»."
+        }
+      ],
+      "security": "Scorecard нет данных; fake stars — нет данных (API stargazers 403); скам-маркеров не найдено. Лицензия: MIT."
+    }
+  ]
+}
